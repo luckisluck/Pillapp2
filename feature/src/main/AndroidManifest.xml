@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dispenses.pill.pillapp.feature">
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+
+    <application>
+        <activity android:name=".MainActivity">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="pill.dispenses.com"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".dashboard" />
+        <activity android:name=".schedule" />
+        <activity android:name=".bottlechoose" />
+        <activity android:name=".bottlechoose2" />
+        <activity android:name=".bottlechoose3" />
+        <activity android:name=".AlarmAdd" />
+        <activity android:name=".AlarmCancel" />
+        <activity android:name=".History" />
+        <activity android:name=".Setting" />
+        <activity android:name=".DispenseManual" />
+        <activity android:name=".home" />
+        <activity android:name=".test" />
+        <service android:name=".RingtonePlayingService" />
+        <receiver android:name=".AlarmReceiver" android:process=":remote" />
+
+
+    </application>
+
+
+
+</manifest>
