@@ -23,19 +23,23 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="14dp"
             android:background="@drawable/rounded_buttonred"
+            android:onClick="noo"
             android:text="History"
-            android:textColor="#FFFFFF"
-            android:onClick="noo"/>
+            android:textColor="#FFFFFF" />
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/bottomBar"
-        android:layout_alignParentBottom="true">
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </FrameLayout>
 
-
+    <!-- content fixated to the bottom of the screen -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottomNavView_Bar"
@@ -43,9 +47,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="#FF5555"
-            app:menu="@menu/main_menu"
-            />
-    </RelativeLayout>
+            app:menu="@menu/main_menu" />
+
+    </LinearLayout>
+
 
 
 </LinearLayout>
