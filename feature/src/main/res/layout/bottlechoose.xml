@@ -42,70 +42,28 @@
         android:layout_width="match_parent"
         android:layout_height="492dp">
 
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="40dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
 
-        <EditText
-            android:id="@+id/editText13"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_alignTop="@+id/editText4"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="7dp"
-            android:layout_toEndOf="@+id/editText4"
-            android:ems="10"
-            android:inputType="time"
-            android:hint="Starttime"/>
-
-        <EditText
-            android:id="@+id/editText18"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_alignBaseline="@+id/editText20"
-            android:layout_alignBottom="@+id/editText20"
-            android:layout_alignStart="@+id/editText4"
-            android:layout_marginStart="9dp"
-            android:ems="10"
-            android:inputType="time"
-            android:hint="EndTime"/>
-
-        <EditText
-            android:id="@+id/editText20"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/editText13"
-            android:layout_marginEnd="11dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="number"
-            android:hint="PillAmt"/>
 
         <Button
             android:id="@+id/button11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/editText18"
-            android:layout_below="@+id/editText18"
             android:layout_marginTop="13dp"
             android:onClick="noway"
             android:text="Fuck ME" />
 
-        <ListView
-            android:id="@+id/getuser"
-            android:layout_width="match_parent"
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/button11"/>
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="81dp"
+            android:layout_marginEnd="33dp"
+            android:tint="#FFFFFF"
+            app:srcCompat="@drawable/ic_add_circle_black_24dp" />
 
 
     </RelativeLayout>

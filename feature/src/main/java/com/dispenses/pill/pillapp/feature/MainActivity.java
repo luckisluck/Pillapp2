@@ -10,7 +10,11 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -28,6 +32,9 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
+    LinearLayout l1,l2;
+    Button btn1,btn2;
+    Animation uptodown,downtoup;
     private EditText etEmail;
     private EditText etPassword;
     public static final int CONNECTION_TIMEOUT=10000;
@@ -41,8 +48,18 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
 
             // Get Reference to variables
-            etEmail = (EditText) findViewById(R.id.editText);
-            etPassword = (EditText) findViewById(R.id.editText2);
+            etEmail = (EditText) findViewById(R.id.editText25);
+            etPassword = (EditText) findViewById(R.id.editText26);
+
+
+            btn1 = (Button)findViewById(R.id.button4);
+            btn2 = (Button)findViewById(R.id.button5);
+            l1 = (LinearLayout) findViewById(R.id.l1);
+            l2 = (LinearLayout) findViewById(R.id.l2);
+            uptodown = AnimationUtils.loadAnimation(this,R.anim.uptodown);
+            downtoup = AnimationUtils.loadAnimation(this,R.anim.downtoup);
+            l1.setAnimation(uptodown);
+            l2.setAnimation(downtoup);
 
 
         }
