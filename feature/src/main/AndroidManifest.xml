@@ -13,7 +13,7 @@
 
 
 
-    <application>
+    <application android:allowBackup="false" android:fullBackupContent="false">
         <activity android:name=".MainActivity">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
@@ -32,7 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".dashboard" />
         <activity android:name=".schedule" />
         <activity android:name=".bottlechoose" />
         <activity android:name=".bottlechoose2" />
@@ -46,8 +45,6 @@
         <activity android:name=".test" />
         <service android:name=".RingtonePlayingService" />
         <receiver android:name=".AlarmReceiver" android:process=":remote" />
-
-
     </application>
 
 

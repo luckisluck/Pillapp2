@@ -44,6 +44,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -135,14 +136,9 @@ public class AlarmAdd extends AppCompatActivity {
     public void LoadInt( )
     {
     SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
-    int RQS_1 = sp.getInt("key", 1);
+    RQS_1 = sp.getInt("key", 1);
     }
 
-    public void LoadAlInt( )
-    {
-        SharedPreferences sp = getSharedPreferences("Alarmdesu", Activity.MODE_PRIVATE);
-        int cancelAlarm = sp.getInt("Al", 0);
-    }
 
 
     private void setAlarm(Calendar targetCal){
@@ -224,6 +220,7 @@ public class AlarmAdd extends AppCompatActivity {
             {
                 return;
             }
+            Toast.makeText(this, "bitch i work", Toast.LENGTH_LONG).show();
             String[] columns = new String[] {
                     MyDBHandler.COLUMN_ALARMNAME,
                     MyDBHandler.COLUMN_TIME

@@ -4,9 +4,11 @@ package com.dispenses.pill.pillapp.feature;
  * Created by Win10 on 19/02/2018.
  */
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -34,6 +36,7 @@ import static com.dispenses.pill.pillapp.feature.MainActivity.READ_TIMEOUT;
 
 public class popup_autoX extends AppCompatDialogFragment {
 
+    MyDBHandler  dbHandler;
     private EditText editTextname;
     private EditText editTextpillamt;
     private EditText editTextstart;
@@ -45,10 +48,11 @@ public class popup_autoX extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.popup_autox, null);
-
+        final Context context = inflater.getContext();
+        dbHandler = new MyDBHandler(context, null, null, 1);
 
         builder.setView(view)
-                .setTitle("Add Alarm")
+                .setTitle("Set Schedule")
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -65,9 +69,14 @@ public class popup_autoX extends AppCompatDialogFragment {
                         final String endTime = editTextend.getText().toString();
                         final String pillAmt = editTextpillamt.getText().toString();
                         final String table ="dispenseauto_X";
+                        int k= Integer.parseInt(pillAmt);
+                        try {
+                            bottlexGetSet p = new bottlexGetSet(name,startTime,endTime,k);
+                            dbHandler.bottlexAdd(p);
+                        } catch (Exception e) {
+                            Toast.makeText(context, "didnt add to DB", Toast.LENGTH_LONG).show();
+                        }
                         new AsyncaddRecordAutos().execute(name,startTime,endTime,pillAmt,table);
-
-
 
                     }
                 });
@@ -78,6 +87,7 @@ public class popup_autoX extends AppCompatDialogFragment {
         editTextend = view.findViewById(R.id.editText125);
         return builder.create();
     }
+
 
     private class AsyncaddRecordAutos extends AsyncTask<String, String, String> {
 
