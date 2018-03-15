@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
@@ -36,6 +37,9 @@ import java.net.URL;
 public class bottlechoose extends AppCompatActivity {
 
 
+    FloatingActionButton fab1, fab2;
+    boolean isFABOpen=false;
+
 
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
@@ -57,7 +61,28 @@ public class bottlechoose extends AppCompatActivity {
         dbHandler = new MyDBHandler(this, null, null, 1);
         lvProducts = (ListView) findViewById(R.id.hello);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab1 = (FloatingActionButton) findViewById(R.id.fab1);
+        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+
         fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isFABOpen){
+                    showFABMenu();
+                }else{
+                    closeFABMenu();
+                }
+            }
+        });
+
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+            }
+        });
+
+        fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openDialog();
@@ -67,6 +92,20 @@ public class bottlechoose extends AppCompatActivity {
 
     }
 
+
+    private void showFABMenu(){
+        isFABOpen=true;
+        fab1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
+        fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
+
+    }
+
+    private void closeFABMenu(){
+        isFABOpen=false;
+        fab1.animate().translationY(0);
+        fab2.animate().translationY(0);
+
+    }
 
     public void openDialog(){
         popup_autoX popupTest = new popup_autoX();
