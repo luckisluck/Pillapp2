@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="66dp"
         android:background="#FF5555"
@@ -36,131 +40,129 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text="Mannual Dispense"
-                android:textSize="20dp"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
+
         </RelativeLayout>
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="492dp">
 
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/rounded_buttonred"
+        android:onClick="disman"
+        android:text="Dispense"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavView_Bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_below="@+id/checkBox3"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="42dp"
-            android:background="@drawable/rounded_buttonred"
-            android:text="Dispense"
-            android:textColor="#FFFFFF"
-            android:onClick="disman"/>
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="140dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="212dp"
+        android:onClick="checkbox1"
+        android:text="Pill Name 1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="46dp"
-            android:textSize="25dp"
-            android:textColor="#000"
-            android:text="Pill List" />
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="140dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="284dp"
+        android:onClick="checkbox2"
+        android:text="Pill Name 2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/button9"
-            android:layout_alignRight="@+id/button9"
-            android:layout_below="@+id/textView10"
-            android:layout_marginTop="36dp"
-            android:text="Pill Name 1"
-            android:onClick="checkbox1"/>
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="140dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="360dp"
+        android:onClick="checkbox3"
+        android:text="Pill Name 3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/checkBox"
-            android:layout_alignStart="@+id/checkBox"
-            android:layout_below="@+id/checkBox"
-            android:layout_marginTop="22dp"
-            android:text="Pill Name 2"
-            android:onClick="checkbox2"/>
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="114dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="224dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        app:layout_constraintStart_toEndOf="@+id/checkBox"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/checkBox2"
-            android:layout_alignStart="@+id/checkBox2"
-            android:layout_below="@+id/checkBox2"
-            android:layout_marginTop="22dp"
-            android:text="Pill Name 3"
-            android:onClick="checkbox3"/>
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="114dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="304dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        app:layout_constraintStart_toEndOf="@+id/checkBox2"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editText6"
-            android:layout_width="45dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/checkBox"
-            android:layout_marginLeft="12dp"
-            android:layout_marginStart="12dp"
-            android:layout_toEndOf="@+id/checkBox"
-            android:layout_toRightOf="@+id/checkBox"
-            android:ems="10"
-            android:inputType="numberSigned" />
+    <EditText
+        android:id="@+id/editText8"
+        android:layout_width="114dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="372dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        app:layout_constraintStart_toEndOf="@+id/checkBox3"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editText7"
-            android:layout_width="45dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/checkBox3"
-            android:layout_alignLeft="@+id/editText6"
-            android:layout_alignStart="@+id/editText6"
-            android:ems="10"
-            android:inputType="numberSigned" />
-
-        <EditText
-            android:id="@+id/editText8"
-            android:layout_width="45dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/checkBox3"
-            android:layout_alignLeft="@+id/editText7"
-            android:layout_alignStart="@+id/editText7"
-            android:ems="10"
-            android:inputType="numberSigned" />
-
-    </RelativeLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-    </FrameLayout>
 
     <!-- content fixated to the bottom of the screen -->
-    <LinearLayout
-        android:layout_width="match_parent"
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottomNavView_Bar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="8dp"
+        android:background="#FF5555"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/main_menu" />
 
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/bottomNavView_Bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="#FF5555"
-            app:menu="@menu/main_menu" />
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/dispense3"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="104dp"
+        android:text="Pill List"
+        android:textColor="#000"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
 
-    </LinearLayout>
 
-
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
 
 
 
