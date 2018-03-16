@@ -192,7 +192,6 @@
             android:background="@drawable/rounde_butt"
             android:fontFamily="@font/moon"
             android:text="Alarm"
-            android:textstyle="Bold"
             android:textColor="#FFFFFF" />
 
 
