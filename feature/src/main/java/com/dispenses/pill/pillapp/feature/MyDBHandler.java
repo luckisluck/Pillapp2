@@ -216,6 +216,25 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public boolean deleteSchedule(String name) {
+        boolean result = false;
+        String q = "SELECT * FROM " + TABLE_BOTTLEX + " WHERE " + COLUMN_NAME
+                + " = \"" + name + "\"";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+        bottlexGetSet p = new bottlexGetSet();
+        if (cursor.moveToFirst()) {
+            cursor.moveToFirst();
+            p.set_id(Integer.parseInt(cursor.getString(0)));
+            db.delete(TABLE_BOTTLEX, COLUMN_ID + " = ?",
+                    new String[] { String.valueOf(p.get_id())});
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
     /**
      * Finds a product in the database and returns it to the caller. If this function does not find
      * a product, then the returned product is null

@@ -86,7 +86,7 @@ public class bottlechoose extends AppCompatActivity {
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog();
+                delx();
             }
         });
 
@@ -122,7 +122,11 @@ public class bottlechoose extends AppCompatActivity {
         displayxlist();
     }
 
-
+    public void delx(){
+        popup_deletebottlex popupTest = new popup_deletebottlex();
+        popupTest.show(getSupportFragmentManager(),"example dialog popup");
+        displayxlist();
+    }
 
     private void displayxlist() {
         try
