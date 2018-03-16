@@ -6,6 +6,8 @@ package com.dispenses.pill.pillapp.feature;
 
 public class bottlezGetSet {
 
+
+
     private int _id;
     private int pillAmtz;
     private String namez;
@@ -65,5 +67,13 @@ public class bottlezGetSet {
 
     public void setEndtimez(String endtimez) {
         this.endtimez = endtimez;
+    }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 }

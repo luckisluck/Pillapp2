@@ -10,6 +10,8 @@ public class bottleyGetSet {
     private String namey;
     private String starttimey;
     private String endtimey;
+
+
     private int _id;
 
     public bottleyGetSet()
@@ -66,5 +68,14 @@ public class bottleyGetSet {
     public void setEndtimey(String endtimey) {
         this.endtimey = endtimey;
     }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
+    }
+
 
 }

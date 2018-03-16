@@ -57,7 +57,7 @@ public class bottlechoose3 extends AppCompatActivity {
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog();
+                delSchedulez();
             }
         });
         displayZlist();
@@ -79,6 +79,11 @@ public class bottlechoose3 extends AppCompatActivity {
 
     public void openDialog(){
         popupZ_schedule popupTest = new popupZ_schedule();
+        popupTest.show(getSupportFragmentManager(),"example dialog popup");
+    }
+
+    public void delSchedulez(){
+        popupZ_del popupTest = new popupZ_del();
         popupTest.show(getSupportFragmentManager(),"example dialog popup");
     }
 

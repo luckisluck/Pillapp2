@@ -235,6 +235,45 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return result;
     }
 
+    public boolean deleteScheduley(String name) {
+        boolean result = false;
+        String q = "SELECT * FROM " + TABLE_BOTTLEY + " WHERE " + COLUMN_NAMEY
+                + " = \"" + name + "\"";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+        bottleyGetSet p = new bottleyGetSet();
+        if (cursor.moveToFirst()) {
+            cursor.moveToFirst();
+            p.set_id(Integer.parseInt(cursor.getString(0)));
+            db.delete(TABLE_BOTTLEY, COLUMN_ID + " = ?",
+                    new String[] { String.valueOf(p.get_id())});
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+
+
+    public boolean deleteSchedulez(String name) {
+        boolean result = false;
+        String q = "SELECT * FROM " + TABLE_BOTTLEZ + " WHERE " + COLUMN_NAMEZ
+                + " = \"" + name + "\"";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+        bottlezGetSet p = new bottlezGetSet();
+        if (cursor.moveToFirst()) {
+            cursor.moveToFirst();
+            p.set_id(Integer.parseInt(cursor.getString(0)));
+            db.delete(TABLE_BOTTLEZ, COLUMN_ID + " = ?",
+                    new String[] { String.valueOf(p.get_id())});
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
     /**
      * Finds a product in the database and returns it to the caller. If this function does not find
      * a product, then the returned product is null

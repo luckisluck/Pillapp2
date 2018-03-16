@@ -70,7 +70,7 @@ public class bottlechoose2 extends AppCompatActivity {
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog();
+                delScheduley();
             }
         });
         displayYlist();
@@ -92,6 +92,11 @@ public class bottlechoose2 extends AppCompatActivity {
 
     public void openDialog(){
         popupY_schedule popupTest = new popupY_schedule();
+        popupTest.show(getSupportFragmentManager(),"example dialog popup");
+    }
+
+    public void delScheduley(){
+        popupY_del popupTest = new popupY_del();
         popupTest.show(getSupportFragmentManager(),"example dialog popup");
     }
 
