@@ -13,6 +13,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:text="Name: "
+        android:fontFamily="@font/moon"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -22,6 +23,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textViewx"
         android:layout_marginTop="7dp"
+        android:fontFamily="@font/moon"
         android:text="Start Time: "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -33,6 +35,7 @@
         android:layout_below="@+id/starttimex"
         android:layout_marginTop="7dp"
         android:text="End Time: "
+        android:fontFamily="@font/moon"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -42,6 +45,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/endttime"
         android:layout_marginTop="7dp"
+        android:fontFamily="@font/moon"
         android:text="Pill Amount: "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -53,6 +57,7 @@
         android:layout_above="@+id/starttimex"
         android:layout_marginStart="15dp"
         android:layout_toEndOf="@+id/PillAmt"
+        android:fontFamily="@font/moon"
         android:text="TextView" />
 
     <TextView
@@ -62,6 +67,7 @@
         android:layout_alignBaseline="@+id/starttimex"
         android:layout_alignBottom="@+id/starttimex"
         android:layout_alignStart="@+id/Namex"
+        android:fontFamily="@font/moon"
         android:text="TextView" />
     <TextView
         android:id="@+id/endx"
@@ -69,6 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/PillAmt"
         android:layout_alignStart="@+id/startx"
+        android:fontFamily="@font/moon"
         android:text="TextView" />
 
 
@@ -79,5 +86,6 @@
         android:layout_alignBaseline="@+id/PillAmt"
         android:layout_alignBottom="@+id/PillAmt"
         android:layout_alignStart="@+id/endx"
+        android:fontFamily="@font/moon"
         android:text="TextView" />
 </RelativeLayout>

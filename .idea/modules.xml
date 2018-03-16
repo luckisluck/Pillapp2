@@ -3,11 +3,17 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Pillapp2.iml" filepath="$PROJECT_DIR$/Pillapp2.iml" />
+      <module fileurl="file://C:\Users\ADMIN\Documents\GitHub\Pillapp2\Pillapp2.iml" filepath="C:\Users\ADMIN\Documents\GitHub\Pillapp2\Pillapp2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\ADMIN\Documents\GitHub\Pillapp2\app\app.iml" filepath="C:\Users\ADMIN\Documents\GitHub\Pillapp2\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
+      <module fileurl="file://C:\Users\ADMIN\Documents\GitHub\Pillapp2\base\base.iml" filepath="C:\Users\ADMIN\Documents\GitHub\Pillapp2\base\base.iml" />
       <module fileurl="file://$PROJECT_DIR$/bottom-bar/bottom-bar.iml" filepath="$PROJECT_DIR$/bottom-bar/bottom-bar.iml" />
+      <module fileurl="file://C:\Users\ADMIN\Documents\GitHub\Pillapp2\bottom-bar\bottom-bar.iml" filepath="C:\Users\ADMIN\Documents\GitHub\Pillapp2\bottom-bar\bottom-bar.iml" />
       <module fileurl="file://$PROJECT_DIR$/feature/feature.iml" filepath="$PROJECT_DIR$/feature/feature.iml" />
+      <module fileurl="file://C:\Users\ADMIN\Documents\GitHub\Pillapp2\feature\feature.iml" filepath="C:\Users\ADMIN\Documents\GitHub\Pillapp2\feature\feature.iml" />
       <module fileurl="file://$PROJECT_DIR$/instantapp/instantapp.iml" filepath="$PROJECT_DIR$/instantapp/instantapp.iml" />
+      <module fileurl="file://C:\Users\ADMIN\Documents\GitHub\Pillapp2\instantapp\instantapp.iml" filepath="C:\Users\ADMIN\Documents\GitHub\Pillapp2\instantapp\instantapp.iml" />
     </modules>
   </component>
 </project>

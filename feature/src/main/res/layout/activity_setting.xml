@@ -6,28 +6,41 @@
     android:background="#FFFFFF"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="274dp"
-        android:background="#FF5555"></RelativeLayout>
+        android:layout_height="66dp"
+        android:background="@drawable/gradle"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="283dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="14dp"
-            android:background="@drawable/rounded_buttonred"
-            android:text="Setting"
-            android:textColor="#FFFFFF"
-            android:onClick="yesss"/>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/moon"
+                android:text="Setting"
+                android:textColor="#FFFFFF"
+                android:textSize="24dp" />
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView4"
+                android:layout_marginEnd="7dp"
+                android:layout_toStartOf="@+id/textView4"
+                android:tint="#FFFFFF"
+                app:srcCompat="@drawable/ic_settings_black_24dp" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -46,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="#FF5555"
+            android:background="@drawable/gradle"
             app:menu="@menu/main_menu" />
 
     </LinearLayout>

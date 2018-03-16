@@ -61,6 +61,7 @@
                         android:layout_marginTop="18dp"
                         android:background="@drawable/rounde_butt"
                         android:text="Sign in"
+                        android:fontFamily="@font/moon"
                         android:textColor="#FFFFFF"
                         android:onClick="checkLogin"/>
 
@@ -74,6 +75,7 @@
                         android:layout_marginTop="28dp"
                         android:ems="10"
                         android:hint="Username"
+                        android:fontFamily="@font/moon"
                         android:inputType="textPersonName" />
 
                     <Button
@@ -85,6 +87,7 @@
                         android:layout_marginEnd="11dp"
                         android:background="@drawable/rounde_butt"
                         android:text="Sign up"
+                        android:fontFamily="@font/moon"
                         android:textColor="#FFFFFF" />
 
                     <EditText
@@ -96,6 +99,7 @@
                         android:layout_marginTop="9dp"
                         android:ems="10"
                         android:hint="Password"
+                        android:fontFamily="@font/moon"
                         android:inputType="textPassword" />
                 </RelativeLayout>
 

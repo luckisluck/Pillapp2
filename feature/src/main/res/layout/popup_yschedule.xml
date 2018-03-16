@@ -13,6 +13,7 @@
         android:layout_marginTop="31dp"
         android:ems="10"
         android:hint="Pill Name"
+        android:fontFamily="@font/moon"
         android:inputType="textPersonName"
         android:textSize="15dp" />
 
@@ -27,6 +28,7 @@
         android:textSize="15dp"
         android:inputType="time"
         android:hint="Starting Time"
+        android:fontFamily="@font/moon"
         />
 
     <EditText
@@ -39,6 +41,7 @@
         android:ems="10"
         android:hint="Ending Time"
         android:inputType="time"
+        android:fontFamily="@font/moon"
         android:textSize="15dp" />
 
     <EditText
@@ -52,5 +55,6 @@
         android:ems="10"
         android:hint="Pill Amt"
         android:inputType="number"
+        android:fontFamily="@font/moon"
         android:textSize="15dp" />
 </RelativeLayout>

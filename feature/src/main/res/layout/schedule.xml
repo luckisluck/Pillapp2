@@ -11,23 +11,39 @@
         android:background="@drawable/gradle"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/moon"
-            android:text="Schedule"
-            android:textColor="#FFFFFF"
-            android:textSize="25dp" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/moon"
+                android:text="Schedule"
+                android:textColor="#FFFFFF"
+                android:textSize="24dp" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView4"
+                android:layout_marginEnd="7dp"
+                android:layout_toStartOf="@+id/textView4"
+                android:tint="#FFFFFF"
+                app:srcCompat="@drawable/ic_event_black_24dp" />
+
+
+        </RelativeLayout>
 
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="550dp">
+        android:layout_height="540dp">
 
         <android.support.v7.widget.CardView
             android:id="@+id/cardView"
@@ -35,7 +51,6 @@
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:clickable="true"
             android:backgroundTint="#FFFFFF">
 
             <RelativeLayout
@@ -62,9 +77,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="46dp"
                     android:layout_toEndOf="@+id/imageView3"
+                    android:fontFamily="@font/moon"
                     android:text="Bottom 1"
                     android:textColor="#FF5555"
-                    android:fontFamily="@font/moon"
                     android:textSize="25dp" />
 
 
@@ -79,7 +94,6 @@
             android:layout_alignStart="@+id/cardView"
             android:layout_below="@+id/cardView"
             android:layout_marginTop="18dp"
-            android:clickable="true"
             android:backgroundTint="#FFFFFF">
 
             <RelativeLayout
@@ -111,6 +125,7 @@
                     android:layout_marginTop="18dp"
                     android:layout_toEndOf="@+id/imageView2"
                     android:text="Bottom 2"
+                    android:fontFamily="@font/moon"
                     android:textColor="#FF5555"
                     android:textSize="25dp" />
 
@@ -126,7 +141,6 @@
             android:layout_alignStart="@+id/cardView2"
             android:layout_below="@+id/cardView2"
             android:layout_marginTop="19dp"
-            android:clickable="true"
             android:backgroundTint="#FFFFFF">
 
             <RelativeLayout
@@ -158,6 +172,7 @@
                     android:layout_marginTop="17dp"
                     android:layout_toEndOf="@+id/imageView1"
                     android:text="Bottom 3"
+                    android:fontFamily="@font/moon"
                     android:textColor="#FF5555"
                     android:textSize="25dp" />
 
@@ -181,34 +196,16 @@
 
 
     </RelativeLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-    </FrameLayout>
-
-    <!-- content fixated to the bottom of the screen -->
-    <LinearLayout
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottomNavView_Bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@drawable/gradle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/main_menu" />
 
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/bottomNavView_Bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@drawable/gradle"
-            app:menu="@menu/main_menu" />
-
-    </LinearLayout>
 
 </LinearLayout>
-
-
-
-
-
-
-
