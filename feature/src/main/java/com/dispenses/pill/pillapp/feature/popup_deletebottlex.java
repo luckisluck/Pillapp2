@@ -38,10 +38,10 @@ public class popup_deletebottlex extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                         final String name = delname.getText().toString();
-                        if (dbHandler.deleteProduct(name)) {
+                        if (dbHandler.deleteSchedule(name)) {
 
                         } else {
-                            Toast.makeText(getActivity(), "didnt add to DB", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "didnt del from DB", Toast.LENGTH_LONG).show();
                         }
 
 
