@@ -1,1 +1,1 @@
-include ':feature', ':app', ':base', ':instantapp', ':bottom-bar'
+include ':feature', ':app', ':base', ':instantapp'
