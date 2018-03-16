@@ -10,11 +10,22 @@ public class bottleyGetSet {
     private String namey;
     private String starttimey;
     private String endtimey;
+    private int _id;
 
     public bottleyGetSet()
     {
 
     }
+
+    public bottleyGetSet(int _id,String namey, String starttimey, String endtimey, int pillAmty)
+    {
+        this._id=_id;
+        this.namey =namey;
+        this.starttimey=starttimey;
+        this.endtimey=endtimey;
+        this.pillAmty=pillAmty;
+    }
+
 
     public bottleyGetSet(String namey, String starttimey, String endtimey, int pillAmty)
     {

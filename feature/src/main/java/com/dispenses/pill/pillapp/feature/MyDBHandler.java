@@ -145,7 +145,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     public Cursor getallbottley() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_BOTTLEY, new String[] {COLUMN_NAMEY, COLUMN_STARTTIMEY,
+        Cursor cursor = db.query(TABLE_BOTTLEY, new String[] {COLUMN_IDY,COLUMN_NAMEY, COLUMN_STARTTIMEY,
                 COLUMN_ENDTIMETIMEY,COLUMN_PILLAMTY}, null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
@@ -160,7 +160,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     public Cursor getallbottlez() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_BOTTLEZ, new String[] {COLUMN_NAMEZ, COLUMN_STARTTIMEZ,
+        Cursor cursor = db.query(TABLE_BOTTLEZ, new String[] {COLUMN_IDZ,COLUMN_NAMEZ, COLUMN_STARTTIMEZ,
                 COLUMN_ENDTIMETIMEZ,COLUMN_PILLAMTZ}, null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
