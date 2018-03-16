@@ -23,8 +23,7 @@ import android.support.annotation.Nullable;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.OnMenuTabClickListener;
+
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -36,7 +35,7 @@ import android.widget.Toast;
 
 public class test extends AppCompatActivity {
 
-    private BottomBar mBottomBar;
+
     private TextView mMessageView;
 
 
