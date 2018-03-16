@@ -12,7 +12,7 @@
     <item
         android:id="@+id/ic_dispense"
         android:icon="@drawable/ic_touch_app_black_24dp"
-        android:title="dispense">
+        android:title="Dispense">
     </item>
 
     <item
