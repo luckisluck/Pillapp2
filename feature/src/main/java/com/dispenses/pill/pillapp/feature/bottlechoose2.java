@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 public class bottlechoose2 extends AppCompatActivity {
 
-    FloatingActionButton fab1, fab2;
+    FloatingActionButton fab1, fab2,fab3;
     boolean isFABOpen = false;
 
 
@@ -48,6 +48,8 @@ public class bottlechoose2 extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +75,13 @@ public class bottlechoose2 extends AppCompatActivity {
                 delScheduley();
             }
         });
+
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edity();
+            }
+        });
         displayYlist();
     }
 
@@ -81,6 +90,7 @@ public class bottlechoose2 extends AppCompatActivity {
         isFABOpen = true;
         fab1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
         fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
+        fab3.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
 
     }
 
@@ -88,6 +98,7 @@ public class bottlechoose2 extends AppCompatActivity {
         isFABOpen = false;
         fab1.animate().translationY(0);
         fab2.animate().translationY(0);
+        fab3.animate().translationY(0);
     }
 
     public void openDialog(){
@@ -98,6 +109,12 @@ public class bottlechoose2 extends AppCompatActivity {
     public void delScheduley(){
         popupY_del popupTest = new popupY_del();
         popupTest.show(getSupportFragmentManager(),"example dialog popup");
+    }
+
+    public void edity(){
+        EditPillY popupTest = new EditPillY();
+        popupTest.show(getSupportFragmentManager(),"example dialog popup");
+        displayYlist();
     }
 
     private void displayYlist() {

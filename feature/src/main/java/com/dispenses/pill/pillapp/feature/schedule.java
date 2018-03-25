@@ -1,9 +1,12 @@
 package com.dispenses.pill.pillapp.feature;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +14,7 @@ import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 /**
@@ -20,6 +24,14 @@ import android.view.View;
 public class schedule extends AppCompatActivity implements View.OnClickListener {
 
     private CardView bottle1,bottle2,bottle3;
+    String keyx="nameBX";
+    String keyY="nameBY";
+    String keyZ="nameBZ";
+    String getX;
+    String getY;
+    String getZ;
+
+    private static final String PREFS_NAME = "set";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +44,18 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
         bottle1.setOnClickListener(this);
         bottle2.setOnClickListener(this);
         bottle3.setOnClickListener(this);
+
+        getX=getDefaults(keyx,this);
+        final TextView mTextView = (TextView) findViewById(R.id.textView2);
+        mTextView.setText(getX);
+
+        getY=getDefaults(keyY,this);
+        final TextView mTextView1 = (TextView) findViewById(R.id.textView3);
+        mTextView1.setText(getY);
+
+        getZ=getDefaults(keyZ,this);
+        final TextView mTextView2 = (TextView) findViewById(R.id.textView1);
+        mTextView2.setText(getZ);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -111,5 +135,10 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
                 }
 
 
+    }
+
+    public static String getDefaults(String key, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString(key, "Edit Name Inside");
     }
 }

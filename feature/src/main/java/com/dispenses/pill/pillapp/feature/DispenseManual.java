@@ -1,10 +1,13 @@
 package com.dispenses.pill.pillapp.feature;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -42,6 +46,12 @@ public class DispenseManual extends AppCompatActivity {
     EditText pillAmt1;
     EditText pillAmt2;
     EditText pillAmt3;
+    String keyx="nameBX";
+    String keyY="nameBY";
+    String keyZ="nameBZ";
+    String getX;
+    String getY;
+    String getZ;
     int box1=0;
     int box2=0;
     int box3=0;
@@ -58,6 +68,17 @@ public class DispenseManual extends AppCompatActivity {
         pillAmt2 = (EditText) findViewById(R.id.editText7);
         pillAmt3 = (EditText) findViewById(R.id.editText8);
 
+        getX=getDefaults(keyx,this);
+        final TextView mTextView = (TextView) findViewById(R.id.checkBox);
+        mTextView.setText(getX);
+
+        getY=getDefaults(keyY,this);
+        final TextView mTextView1 = (TextView) findViewById(R.id.checkBox2);
+        mTextView1.setText(getY);
+
+        getZ=getDefaults(keyZ,this);
+        final TextView mTextView2 = (TextView) findViewById(R.id.checkBox3);
+        mTextView2.setText(getZ);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -307,7 +328,10 @@ public class DispenseManual extends AppCompatActivity {
     }
 
 
-
+    public static String getDefaults(String key, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString(key, "Edit Name Inside Schedule");
+    }
 
 
 

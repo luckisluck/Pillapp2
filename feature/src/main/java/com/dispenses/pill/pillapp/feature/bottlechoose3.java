@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class bottlechoose3 extends AppCompatActivity {
 
-    FloatingActionButton fab1, fab2;
+    FloatingActionButton fab1, fab2,fab3;
     boolean isFABOpen = false;
 
 
@@ -35,6 +35,7 @@ public class bottlechoose3 extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        fab3 = (FloatingActionButton) findViewById(R.id.fab3);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +61,16 @@ public class bottlechoose3 extends AppCompatActivity {
                 delSchedulez();
             }
         });
+
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editz();
+            }
+        });
         displayZlist();
+
+
     }
 
 
@@ -68,6 +78,7 @@ public class bottlechoose3 extends AppCompatActivity {
         isFABOpen = true;
         fab1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
         fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
+        fab3.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
 
     }
 
@@ -75,6 +86,7 @@ public class bottlechoose3 extends AppCompatActivity {
         isFABOpen = false;
         fab1.animate().translationY(0);
         fab2.animate().translationY(0);
+        fab3.animate().translationY(0);
     }
 
     public void openDialog(){
@@ -85,6 +97,12 @@ public class bottlechoose3 extends AppCompatActivity {
     public void delSchedulez(){
         popupZ_del popupTest = new popupZ_del();
         popupTest.show(getSupportFragmentManager(),"example dialog popup");
+    }
+
+    public void editz(){
+        EditPillZ popupTest = new EditPillZ();
+        popupTest.show(getSupportFragmentManager(),"example dialog popup");
+        displayZlist();
     }
 
     private void displayZlist() {

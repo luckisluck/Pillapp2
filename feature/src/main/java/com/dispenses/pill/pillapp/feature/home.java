@@ -1,7 +1,9 @@
 package com.dispenses.pill.pillapp.feature;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -40,10 +43,28 @@ import static com.dispenses.pill.pillapp.feature.MainActivity.READ_TIMEOUT;
 
 public class home extends AppCompatActivity {
 
+    String keyx="nameBX";
+    String keyY="nameBY";
+    String keyZ="nameBZ";
+    String getX;
+    String getY;
+    String getZ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
+
+        getX=getDefaults(keyx,this);
+        final TextView mTextView = (TextView) findViewById(R.id.textView8);
+        mTextView.setText(getX);
+
+        getY=getDefaults(keyY,this);
+        final TextView mTextView1 = (TextView) findViewById(R.id.textView9);
+        mTextView1.setText(getY);
+
+        getZ=getDefaults(keyZ,this);
+        final TextView mTextView2 = (TextView) findViewById(R.id.textView11);
+        mTextView2.setText(getZ);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -211,7 +232,10 @@ public class home extends AppCompatActivity {
     }
 
 
-
+    public static String getDefaults(String key, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString(key, "Edit Name Inside Schedule");
+    }
 
 
 

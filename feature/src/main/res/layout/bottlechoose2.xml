@@ -51,6 +51,16 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab3"
+        android:layout_width="@dimen/standard_45"
+        android:layout_height="@dimen/standard_45"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/standard_21"
+        app:srcCompat="@drawable/ic_edit_black_24dp"
+        android:tint="#FFFFFF"
+        android:backgroundTint="@color/colorAccent"
+        app:fabSize="mini"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab2"

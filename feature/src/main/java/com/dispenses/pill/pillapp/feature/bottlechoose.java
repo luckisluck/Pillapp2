@@ -93,7 +93,7 @@ public class bottlechoose extends AppCompatActivity {
         fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog();
+                editx();
             }
         });
 
@@ -124,6 +124,12 @@ public class bottlechoose extends AppCompatActivity {
 
     public void delx(){
         popup_deletebottlex popupTest = new popup_deletebottlex();
+        popupTest.show(getSupportFragmentManager(),"example dialog popup");
+        displayxlist();
+    }
+
+    public void editx(){
+        EditPillX popupTest = new EditPillX();
         popupTest.show(getSupportFragmentManager(),"example dialog popup");
         displayxlist();
     }
