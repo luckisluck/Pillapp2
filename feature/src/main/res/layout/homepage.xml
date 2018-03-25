@@ -16,6 +16,23 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:background="@drawable/gradle">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="76dp"
+                    android:fontFamily="@font/moon"
+                    android:text="Prathiphan Dubey"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -92,13 +109,57 @@
 
         </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView4"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:layout_below="@+id/cardView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="10dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="48dp"
+                    android:text="Bottle 1 : 30 pills" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/textView8"
+                    android:layout_below="@+id/textView8"
+                    android:layout_marginTop="23dp"
+                    android:text="Bottle 2 : 25 pills" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/textView9"
+                    android:layout_below="@+id/textView9"
+                    android:layout_marginTop="23dp"
+                    android:text="Bottle 3 : 31 pills" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/rounde_butt"
             android:fontFamily="@font/moon"
             android:onClick="dispenseplz"
