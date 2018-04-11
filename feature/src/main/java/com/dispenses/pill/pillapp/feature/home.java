@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -30,8 +33,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
-
+import android.os.Handler;
 import android.app.ProgressDialog;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static com.dispenses.pill.pillapp.feature.MainActivity.CONNECTION_TIMEOUT;
 import static com.dispenses.pill.pillapp.feature.MainActivity.READ_TIMEOUT;
@@ -49,6 +56,13 @@ public class home extends AppCompatActivity {
     String getX;
     String getY;
     String getZ;
+    String Temperature;
+    String Humidity;
+    String TempStore="TempStore";
+    String HumidStore="HumidStore";
+    String getTemp;
+    String getHumid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +79,18 @@ public class home extends AppCompatActivity {
         getZ=getDefaults(keyZ,this);
         final TextView mTextView2 = (TextView) findViewById(R.id.textView11);
         mTextView2.setText(getZ);
+
+        new AsyncGetTempHumid().execute();
+
+        getTemp=getDefaults(TempStore,this);
+        final TextView mTextView3 = (TextView) findViewById(R.id.tempshow);
+        mTextView3.setText(getTemp+"C");
+
+        getHumid=getDefaults(HumidStore,this);
+        final TextView mTextView4 = (TextView) findViewById(R.id.humidshow);
+        mTextView4.setText(getHumid+"%");
+
+
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -232,12 +258,88 @@ public class home extends AppCompatActivity {
     }
 
 
+    private class AsyncGetTempHumid extends AsyncTask<Void, Void, String> {
+        ProgressDialog pdLoading = new ProgressDialog(home.this);
+        HttpURLConnection conn;
+        URL url = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //this method will be running on UI thread
+            pdLoading.setMessage("\tLoading...");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            String result = null;
+            try {
+                URL url = new URL("http://weighty-beach-183107.appspot.com/returnTempHumid.php");
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                result = inputStreamToString(in);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            pdLoading.dismiss();
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                JSONArray jsonArray = jsonObject.getJSONArray("all");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    Temperature = jsonArray.getJSONObject(i).getString("Temperature");
+                    Humidity = jsonArray.getJSONObject(i).getString("Humidity");
+                }
+
+                setDefaultstemphumid(TempStore,Temperature,home.this);
+                setDefaultstemphumid(HumidStore,Humidity,home.this);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
     public static String getDefaults(String key, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getString(key, "Edit Name Inside Schedule");
+        return preferences.getString(key, "00");
     }
 
 
+    public static void setDefaultstemphumid(String key, String value, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
 
+    private String inputStreamToString(InputStream is) {
+        String rLine = "";
+        StringBuilder answer = new StringBuilder();
 
+        InputStreamReader isr = new InputStreamReader(is);
+
+        BufferedReader rd = new BufferedReader(isr);
+
+        try {
+            while ((rLine = rd.readLine()) != null) {
+                answer.append(rLine);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return answer.toString();
+    }
 }
