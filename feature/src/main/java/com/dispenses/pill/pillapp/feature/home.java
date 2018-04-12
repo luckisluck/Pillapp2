@@ -60,8 +60,17 @@ public class home extends AppCompatActivity {
     String Humidity;
     String TempStore="TempStore";
     String HumidStore="HumidStore";
+    String PillStoreX="PillStoreX";
+    String PillStoreY="PillStoreY";
+    String PillStoreZ="PillStoreZ";
+    String pillAmtZ;
+    String pillAmtY;
+    String pillAmtX;
     String getTemp;
     String getHumid;
+    String getpillAmtZ;
+    String getpillAmtY;
+    String getpillAmtX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +98,20 @@ public class home extends AppCompatActivity {
         getHumid=getDefaults(HumidStore,this);
         final TextView mTextView4 = (TextView) findViewById(R.id.humidshow);
         mTextView4.setText(getHumid+"%");
+
+        new AsyncGetPillAmt().execute();
+
+        getpillAmtX=getDefaults(PillStoreX,this);
+        final TextView mTextView5 = (TextView) findViewById(R.id.textView12);
+        mTextView5.setText(getpillAmtX+"  "+"pills");
+
+        getpillAmtY=getDefaults(PillStoreY,this);
+        final TextView mTextView6 = (TextView) findViewById(R.id.textView13);
+        mTextView6.setText(getpillAmtY+"  "+"pills");
+
+        getpillAmtZ=getDefaults(PillStoreZ,this);
+        final TextView mTextView7 = (TextView) findViewById(R.id.textView14);
+        mTextView7.setText(getpillAmtZ+"  "+"pills");
 
 
 
@@ -184,6 +207,7 @@ public class home extends AppCompatActivity {
                 conn.setRequestMethod("POST");
 
                 // setDoInput and setDoOutput method depict handling of both send and receive
+
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
 
@@ -303,6 +327,63 @@ public class home extends AppCompatActivity {
 
                 setDefaultstemphumid(TempStore,Temperature,home.this);
                 setDefaultstemphumid(HumidStore,Humidity,home.this);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
+
+    private class AsyncGetPillAmt extends AsyncTask<Void, Void, String> {
+        ProgressDialog pdLoading = new ProgressDialog(home.this);
+        HttpURLConnection conn;
+        URL url = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //this method will be running on UI thread
+            pdLoading.setMessage("\tLoading...");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            String result = null;
+            try {
+                URL url = new URL("http://weighty-beach-183107.appspot.com/getpillAmt.php");
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                result = inputStreamToString(in);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            pdLoading.dismiss();
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                JSONArray jsonArray = jsonObject.getJSONArray("allp");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    pillAmtX = jsonArray.getJSONObject(i).getString("pillAmtX");
+                    pillAmtY = jsonArray.getJSONObject(i).getString("pillAmtY");
+                    pillAmtZ = jsonArray.getJSONObject(i).getString("pillAmtZ");
+                }
+
+                setDefaultstemphumid(PillStoreX,pillAmtX,home.this);
+                setDefaultstemphumid(PillStoreY,pillAmtY,home.this);
+                setDefaultstemphumid(PillStoreZ,pillAmtZ,home.this);
 
             } catch (JSONException e) {
                 e.printStackTrace();

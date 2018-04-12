@@ -167,7 +167,6 @@
                     android:layout_alignBottom="@+id/textView8"
                     android:layout_toEndOf="@+id/textView8"
                     android:fontFamily="@font/moon"
-                    android:text=" 30 pills "
                     android:textSize="18dp" />
 
                 <TextView
@@ -177,7 +176,6 @@
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/textView9"
                     android:fontFamily="@font/moon"
-                    android:text=" 22 pills "
                     android:textSize="18dp" />
 
                 <TextView
@@ -188,7 +186,7 @@
                     android:layout_alignBottom="@+id/textView11"
                     android:layout_alignStart="@+id/textView13"
                     android:fontFamily="@font/moon"
-                    android:text=" 32 pills"
+                    android:text="  pills"
                     android:textSize="18dp" />
 
             </RelativeLayout>
