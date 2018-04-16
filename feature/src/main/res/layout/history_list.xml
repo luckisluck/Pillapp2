@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="80dp"
+    android:orientation="vertical"
+    android:padding="6dp">
+
+
+    <TextView
+        android:id="@+id/pillAmtH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/moon"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/timeH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/pillAmtH"
+        android:layout_marginStart="154dp"
+        android:fontFamily="@font/moon"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/boxH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/pillAmtH"
+        android:layout_marginEnd="68dp"
+        android:fontFamily="@font/moon"
+        android:text="TextView" />
+
+</RelativeLayout>

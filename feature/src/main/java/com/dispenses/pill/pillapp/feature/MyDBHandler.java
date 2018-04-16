@@ -41,6 +41,12 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_ENDTIMETIMEZ = "endtimez";
     public static final String COLUMN_PILLAMTZ = "pillAmtz";
 
+    public static final String TABLE_HISTORY = "history";
+    public static final String COLUMN_IDH = "_id";
+    public static final String COLUMN_pillAmountH = "pillAmt";
+    public static final String COLUMN_TIMEH = "time";
+    public static final String COLUMN_pillBox = "pillBox";
+
 
     public MyDBHandler(Context context, String name,
                        SQLiteDatabase.CursorFactory factory, int version) {
@@ -77,6 +83,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 COLUMN_NAMEZ + " TEXT , " + COLUMN_STARTTIMEZ + " TEXT," +
                 COLUMN_ENDTIMETIMEZ + " TEXT," + COLUMN_PILLAMTZ + " INTEGER )";
         db.execSQL(create_bottlethree_table);
+
+        String create_history_table =  "CREATE TABLE " + TABLE_HISTORY + " ("+
+                COLUMN_IDH + " INTEGER PRIMARY KEY, " +
+                COLUMN_pillAmountH + " TEXT , " + COLUMN_TIMEH + " TEXT," + COLUMN_pillBox + " TEXT )";
+        db.execSQL(create_history_table);
     }
 
     /**
@@ -106,6 +117,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOTTLEX);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOTTLEY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOTTLEZ);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HISTORY);
         onCreate(db);
     }
 
@@ -172,6 +184,28 @@ public class MyDBHandler extends SQLiteOpenHelper {
         }
     }
 
+    public Cursor gethistory() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_HISTORY, new String[] {COLUMN_IDH,COLUMN_pillAmountH, COLUMN_TIMEH,
+                COLUMN_pillBox}, null, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            return cursor;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+
+
+
+
+
+
+
+
 
 
     public void addAlarm(Alarm alarm) {
@@ -215,6 +249,25 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_BOTTLEZ, null, values);
         db.close();
     }
+
+    public void Addhistory(historyGetSet historyGetSet) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_pillAmountH, historyGetSet.getPillAmt());
+        values.put(COLUMN_TIMEH, historyGetSet.getTime());
+        values.put(COLUMN_pillBox, historyGetSet.getPillBox());
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(TABLE_HISTORY, null, values);
+        db.close();
+    }
+
+    public void deleteAllHistory()
+    {
+        String q = "DELETE FROM " + TABLE_HISTORY;
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(q);
+        db.close();
+    }
+
 
     public boolean deleteSchedule(String name) {
         boolean result = false;
