@@ -46,6 +46,23 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="43dp"
+                android:background="@drawable/rounde_butt"
+                android:fontFamily="@font/moon"
+                android:text="Logout"
+                android:textColor="@color/white" />
+        </RelativeLayout>
     </FrameLayout>
 
     <!-- content fixated to the bottom of the screen -->

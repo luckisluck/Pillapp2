@@ -48,7 +48,7 @@ public class EditPillX extends AppCompatDialogFragment {
         View view = inflater.inflate(R.layout.editpill, null);
         final Context context = inflater.getContext();
 
-        builder.setView(view).setTitle("Delete Alarm").setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+        builder.setView(view).setTitle("Edit Pill Box").setNegativeButton("cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 

@@ -2,40 +2,89 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="80dp"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="6dp">
 
-
-    <TextView
-        android:id="@+id/pillAmtH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/moon"
-        android:text="TextView" />
+        android:layout_below="@+id/textView7"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/pillAmtH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/moon"
+            android:text="TextView"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/timeH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/pillAmtH"
+            android:layout_alignBottom="@+id/pillAmtH"
+            android:layout_marginStart="54dp"
+            android:layout_toEndOf="@+id/pillAmtH"
+            android:fontFamily="@font/moon"
+            android:text="TextView"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/boxH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/timeH"
+            android:layout_alignBottom="@+id/timeH"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/moon"
+            android:text="TextView"
+            android:textSize="13dp" />
+
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/timeH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/pillAmtH"
-        android:layout_marginStart="154dp"
-        android:fontFamily="@font/moon"
-        android:text="TextView" />
+    android:id="@+id/textView7"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginStart="38dp"
+    android:layout_marginTop="22dp"
+    android:text="PillAmt"
+    android:fontFamily="@font/moon"
+    android:textSize="15dp"/>
 
     <TextView
-        android:id="@+id/boxH"
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView7"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/moon"
+        android:text="Time"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView8"
+        android:layout_alignBottom="@+id/textView8"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/pillAmtH"
-        android:layout_marginEnd="68dp"
+        android:layout_marginEnd="41dp"
         android:fontFamily="@font/moon"
-        android:text="TextView" />
+        android:text="Box"
+        android:textSize="15dp" />
+
 
 </RelativeLayout>

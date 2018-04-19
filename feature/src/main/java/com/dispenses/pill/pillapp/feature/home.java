@@ -93,25 +93,25 @@ public class home extends AppCompatActivity {
 
         getTemp=getDefaults(TempStore,this);
         final TextView mTextView3 = (TextView) findViewById(R.id.tempshow);
-        mTextView3.setText(getTemp+"C");
+        mTextView3.setText(getTemp+"°C");
 
         getHumid=getDefaults(HumidStore,this);
         final TextView mTextView4 = (TextView) findViewById(R.id.humidshow);
-        mTextView4.setText(getHumid+"%");
+        mTextView4.setText(getHumid+"°C");
 
         new AsyncGetPillAmt().execute();
 
         getpillAmtX=getDefaults(PillStoreX,this);
         final TextView mTextView5 = (TextView) findViewById(R.id.textView12);
-        mTextView5.setText(getpillAmtX+"  "+"pills");
+        mTextView5.setText(getpillAmtX+"  "+" pills");
 
         getpillAmtY=getDefaults(PillStoreY,this);
         final TextView mTextView6 = (TextView) findViewById(R.id.textView13);
-        mTextView6.setText(getpillAmtY+"  "+"pills");
+        mTextView6.setText(getpillAmtY+"  "+" pills");
 
         getpillAmtZ=getDefaults(PillStoreZ,this);
         final TextView mTextView7 = (TextView) findViewById(R.id.textView14);
-        mTextView7.setText(getpillAmtZ+"  "+"pills");
+        mTextView7.setText(getpillAmtZ+"  "+" pills");
 
 
 
