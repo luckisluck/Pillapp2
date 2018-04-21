@@ -178,6 +178,16 @@
                     android:fontFamily="@font/moon"
                     android:textSize="18dp" />
 
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/textView11"
+                    android:layout_alignBottom="@+id/textView11"
+                    android:layout_toEndOf="@+id/textView11"
+                    android:fontFamily="@font/moon"
+                    android:textSize="18dp" />
+
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
