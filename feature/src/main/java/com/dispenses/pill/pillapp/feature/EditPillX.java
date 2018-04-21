@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -14,7 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import android.widget.SimpleCursorAdapter;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class EditPillX extends AppCompatDialogFragment {
 
     private EditText pillbottle;
     private EditText totalpill;
+    SimpleCursorAdapter simpleCursorAdapter;
     MyDBHandler  dbHandler;
     private static final String PREFS_NAME = "set";
     String keyx="nameBX";
@@ -47,6 +49,7 @@ public class EditPillX extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.editpill, null);
         final Context context = inflater.getContext();
+
 
         builder.setView(view).setTitle("Edit Pill Box").setNegativeButton("cancel", new DialogInterface.OnClickListener() {
             @Override

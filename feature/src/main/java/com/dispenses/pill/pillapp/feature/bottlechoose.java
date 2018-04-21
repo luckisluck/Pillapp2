@@ -60,6 +60,17 @@ public class bottlechoose extends AppCompatActivity {
         setContentView(R.layout.bottlechoose);
         dbHandler = new MyDBHandler(this, null, null, 1);
         lvProducts = (ListView) findViewById(R.id.hello);
+
+        runOnUiThread(new Runnable() {
+            public void run() {
+                displayxlist();
+                simpleCursorAdapter.notifyDataSetChanged();
+                lvProducts.invalidateViews();
+                lvProducts.refreshDrawableState();
+                updateListView();
+
+            }
+        });
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
@@ -97,12 +108,74 @@ public class bottlechoose extends AppCompatActivity {
             }
         });
 
-        displayxlist();
+
 
     }
 
 
-    private void showFABMenu(){
+    @Override
+    public void onResume(){
+        super.onResume();
+        setContentView(R.layout.bottlechoose);
+
+        dbHandler = new MyDBHandler(this, null, null, 1);
+        lvProducts = (ListView) findViewById(R.id.hello);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab1 = (FloatingActionButton) findViewById(R.id.fab1);
+        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+
+        runOnUiThread(new Runnable() {
+            public void run() {
+                displayxlist();
+                simpleCursorAdapter.notifyDataSetChanged();
+                lvProducts.invalidateViews();
+                lvProducts.refreshDrawableState();
+                updateListView();
+
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isFABOpen){
+                    showFABMenu();
+                }else{
+                    closeFABMenu();
+                }
+            }
+        });
+
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+            }
+        });
+
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                delx();
+            }
+        });
+
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editx();
+            }
+        });
+
+
+
+    }
+
+
+
+
+        private void showFABMenu(){
         isFABOpen=true;
         fab1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
         fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
@@ -119,19 +192,23 @@ public class bottlechoose extends AppCompatActivity {
     public void openDialog(){
         popup_autoX popupTest = new popup_autoX();
         popupTest.show(getSupportFragmentManager(),"example dialog popup");
-        displayxlist();
     }
 
     public void delx(){
         popup_deletebottlex popupTest = new popup_deletebottlex();
         popupTest.show(getSupportFragmentManager(),"example dialog popup");
-        displayxlist();
     }
 
     public void editx(){
         EditPillX popupTest = new EditPillX();
         popupTest.show(getSupportFragmentManager(),"example dialog popup");
-        displayxlist();
+    }
+
+    protected void updateListView() {
+        // Get an updated cursor with any changes to the database.
+        Cursor updatedCursor = dbHandler.getallbottlex();
+        // Update the ListAdapter.
+        simpleCursorAdapter.changeCursor(updatedCursor);
     }
 
     private void displayxlist() {

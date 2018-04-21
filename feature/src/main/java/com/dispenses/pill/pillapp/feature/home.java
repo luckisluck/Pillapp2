@@ -76,43 +76,55 @@ public class home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
-
-        getX=getDefaults(keyx,this);
-        final TextView mTextView = (TextView) findViewById(R.id.textView8);
-        mTextView.setText(getX);
-
-        getY=getDefaults(keyY,this);
-        final TextView mTextView1 = (TextView) findViewById(R.id.textView9);
-        mTextView1.setText(getY);
-
-        getZ=getDefaults(keyZ,this);
-        final TextView mTextView2 = (TextView) findViewById(R.id.textView11);
-        mTextView2.setText(getZ);
-
         new AsyncGetTempHumid().execute();
-
-        getTemp=getDefaults(TempStore,this);
-        final TextView mTextView3 = (TextView) findViewById(R.id.tempshow);
-        mTextView3.setText(getTemp+"°C");
-
-        getHumid=getDefaults(HumidStore,this);
-        final TextView mTextView4 = (TextView) findViewById(R.id.humidshow);
-        mTextView4.setText(getHumid+"°C");
-
         new AsyncGetPillAmt().execute();
 
-        getpillAmtX=getDefaults(PillStoreX,this);
-        final TextView mTextView5 = (TextView) findViewById(R.id.textView12);
-        mTextView5.setText(":"+getpillAmtX+" pills");
+        runOnUiThread(new Runnable() {
+            public void run() {
 
-        getpillAmtY=getDefaults(PillStoreY,this);
-        final TextView mTextView6 = (TextView) findViewById(R.id.textView13);
-        mTextView6.setText(":"+getpillAmtY+" pills");
+                getX=getDefaults(keyx,home.this);
+                final TextView mTextView = (TextView) findViewById(R.id.textView8);
+                mTextView.setText(getX);
+                mTextView.invalidate();
 
-        getpillAmtZ=getDefaults(PillStoreZ,this);
-        final TextView mTextView7 = (TextView) findViewById(R.id.textView14);
-        mTextView7.setText(":"+getpillAmtZ+" pills");
+                getY=getDefaults(keyY,home.this);
+                final TextView mTextView1 = (TextView) findViewById(R.id.textView9);
+                mTextView1.setText(getY);
+                mTextView1.invalidate();
 
+                getZ=getDefaults(keyZ,home.this);
+                final TextView mTextView2 = (TextView) findViewById(R.id.textView11);
+                mTextView2.setText(getZ);
+                mTextView2.invalidate();
+
+                getTemp=getDefaults(TempStore,home.this);
+                final TextView mTextView3 = (TextView) findViewById(R.id.tempshow);
+                mTextView3.setText(getTemp+"°C");
+                mTextView3.invalidate();
+
+                getHumid=getDefaults(HumidStore,home.this);
+                final TextView mTextView4 = (TextView) findViewById(R.id.humidshow);
+                mTextView4.setText(getHumid+"°C");
+                mTextView4.invalidate();
+
+                getpillAmtX=getDefaults(PillStoreX,home.this);
+                final TextView mTextView5 = (TextView) findViewById(R.id.textView12);
+                mTextView5.setText(":"+getpillAmtX+" pills");
+                mTextView5.invalidate();
+
+                getpillAmtY=getDefaults(PillStoreY,home.this);
+                final TextView mTextView6 = (TextView) findViewById(R.id.textView13);
+                mTextView6.setText(":"+getpillAmtY+" pills");
+                mTextView6.invalidate();
+
+
+                getpillAmtZ=getDefaults(PillStoreZ,home.this);
+                final TextView mTextView7 = (TextView) findViewById(R.id.textView14);
+                mTextView7.setText(":"+getpillAmtZ+" pills");
+                mTextView7.invalidate();
+
+            }
+        });
 
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
@@ -381,9 +393,12 @@ public class home extends AppCompatActivity {
                     pillAmtZ = jsonArray.getJSONObject(i).getString("pillAmtZ");
                 }
 
+
                 setDefaultstemphumid(PillStoreX,pillAmtX,home.this);
                 setDefaultstemphumid(PillStoreY,pillAmtY,home.this);
                 setDefaultstemphumid(PillStoreZ,pillAmtZ,home.this);
+
+                updatetextview();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -392,6 +407,53 @@ public class home extends AppCompatActivity {
         }
 
     }
+
+    public void updatetextview()
+    {
+
+        getX=getDefaults(keyx,home.this);
+        final TextView mTextView = (TextView) findViewById(R.id.textView8);
+        mTextView.setText(getX);
+        mTextView.invalidate();
+
+        getY=getDefaults(keyY,home.this);
+        final TextView mTextView1 = (TextView) findViewById(R.id.textView9);
+        mTextView1.setText(getY);
+        mTextView1.invalidate();
+
+        getZ=getDefaults(keyZ,home.this);
+        final TextView mTextView2 = (TextView) findViewById(R.id.textView11);
+        mTextView2.setText(getZ);
+        mTextView2.invalidate();
+
+        getTemp=getDefaults(TempStore,home.this);
+        final TextView mTextView3 = (TextView) findViewById(R.id.tempshow);
+        mTextView3.setText(getTemp+"°C");
+        mTextView3.invalidate();
+
+        getHumid=getDefaults(HumidStore,home.this);
+        final TextView mTextView4 = (TextView) findViewById(R.id.humidshow);
+        mTextView4.setText(getHumid+"°C");
+        mTextView4.invalidate();
+
+        getpillAmtX=getDefaults(PillStoreX,home.this);
+        final TextView mTextView5 = (TextView) findViewById(R.id.textView12);
+        mTextView5.setText(":"+getpillAmtX+" pills");
+        mTextView5.invalidate();
+
+        getpillAmtY=getDefaults(PillStoreY,home.this);
+        final TextView mTextView6 = (TextView) findViewById(R.id.textView13);
+        mTextView6.setText(":"+getpillAmtY+" pills");
+        mTextView6.invalidate();
+
+
+        getpillAmtZ=getDefaults(PillStoreZ,home.this);
+        final TextView mTextView7 = (TextView) findViewById(R.id.textView14);
+        mTextView7.setText(":"+getpillAmtZ+" pills");
+        mTextView7.invalidate();
+
+    }
+
 
     public static String getDefaults(String key, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);

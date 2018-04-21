@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -76,7 +77,11 @@ public class popup_autoX extends AppCompatDialogFragment {
                         } catch (Exception e) {
                             Toast.makeText(context, "didnt add to DB", Toast.LENGTH_LONG).show();
                         }
+
+
                         new AsyncaddRecordAutos().execute(name,startTime,endTime,pillAmt,table);
+                        Intent intent1 = new Intent(context, bottlechoose.class);
+                        startActivity(intent1);
 
                     }
                 });

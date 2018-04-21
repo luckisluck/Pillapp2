@@ -1,10 +1,13 @@
 package com.dispenses.pill.pillapp.feature;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +45,13 @@ public class History extends AppCompatActivity {
     String pillAmt_Z;
     String time_Z;
     int count =0;
+    String keyx="nameBX";
+    String keyY="nameBY";
+    String keyZ="nameBZ";
+    String getX;
+    String getY;
+    String getZ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,9 +192,9 @@ public class History extends AppCompatActivity {
                         Cursor cursor = dbHandler.gethistory();
                         if (cursor == null || cursor.getCount() == 0)
                         {
-                            historyGetSet p = new historyGetSet("boxX",pillAmt_X,time_x);
+                            getX=getDefaults(keyx, History.this);
+                            historyGetSet p = new historyGetSet(getX,pillAmt_X,time_x);
                             dbHandler.Addhistory(p);
-                            Toast.makeText(History.this, "addded to DB", Toast.LENGTH_LONG).show();
                         }
 
                         else
@@ -193,9 +203,9 @@ public class History extends AppCompatActivity {
                                 dbHandler.deleteAllHistory();
                                 count = 1;
                             }
-                            historyGetSet p = new historyGetSet("boxX",pillAmt_X,time_x);
+                            getX=getDefaults(keyx, History.this);
+                            historyGetSet p = new historyGetSet(getX,pillAmt_X,time_x);
                             dbHandler.Addhistory(p);
-                            Toast.makeText(History.this, "addded to DB", Toast.LENGTH_LONG).show();
                         }
 
                     } catch (Exception e) {
@@ -209,9 +219,9 @@ public class History extends AppCompatActivity {
                     time_Y = jsonArrayY.getJSONObject(i).getString("time_y");
 
                     try {
-                        historyGetSet p = new historyGetSet("boxY",pillAmt_Y,time_Y);
+                        getY=getDefaults(keyY, History.this);
+                        historyGetSet p = new historyGetSet(getY,pillAmt_Y,time_Y);
                         dbHandler.Addhistory(p);
-                        Toast.makeText(History.this, "addded to DB Y", Toast.LENGTH_LONG).show();
 
                     } catch (Exception e) {
                         Toast.makeText(History.this, "didnt add to DB Y", Toast.LENGTH_LONG).show();
@@ -225,9 +235,9 @@ public class History extends AppCompatActivity {
                     time_Z = jsonArrayZ.getJSONObject(i).getString("time_z");
 
                     try {
-                        historyGetSet p = new historyGetSet("boxZ",pillAmt_Z,time_Z);
+                        getZ=getDefaults(keyZ, History.this);
+                        historyGetSet p = new historyGetSet(getZ,pillAmt_Z,time_Z);
                         dbHandler.Addhistory(p);
-                        Toast.makeText(History.this, "addded to DB Y", Toast.LENGTH_LONG).show();
 
                     } catch (Exception e) {
                         Toast.makeText(History.this, "didnt add to DB Y", Toast.LENGTH_LONG).show();
@@ -265,7 +275,31 @@ public class History extends AppCompatActivity {
     }
 
 
+    public static String getDefaults(String key, Context context) {
+        String Default = "Null";
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        switch (key) {
+            case "nameBX":
+                Default = preferences.getString(key, "Box-X");
+                break;
+            case "nameBY":
+                Default = preferences.getString(key, "Box-Y");
+                break;
+            case "nameBZ":
+                Default = preferences.getString(key, "Box-Z");
+                break;
+        }
 
+            return Default;
+    }
+
+
+    public static void setDefaultstemphumid(String key, String value, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
 
 
 

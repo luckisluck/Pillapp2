@@ -45,17 +45,23 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
         bottle2.setOnClickListener(this);
         bottle3.setOnClickListener(this);
 
-        getX=getDefaults(keyx,this);
-        final TextView mTextView = (TextView) findViewById(R.id.textView2);
-        mTextView.setText(getX);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                getX=getDefaults(keyx,schedule.this);
+                final TextView mTextView = (TextView) findViewById(R.id.textView2);
+                mTextView.setText(getX);
 
-        getY=getDefaults(keyY,this);
-        final TextView mTextView1 = (TextView) findViewById(R.id.textView3);
-        mTextView1.setText(getY);
+                getY=getDefaults(keyY,schedule.this);
+                final TextView mTextView1 = (TextView) findViewById(R.id.textView3);
+                mTextView1.setText(getY);
 
-        getZ=getDefaults(keyZ,this);
-        final TextView mTextView2 = (TextView) findViewById(R.id.textView1);
-        mTextView2.setText(getZ);
+                getZ=getDefaults(keyZ,schedule.this);
+                final TextView mTextView2 = (TextView) findViewById(R.id.textView1);
+                mTextView2.setText(getZ);
+            }
+        });
+
+
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -109,6 +115,102 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
 
 
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setContentView(R.layout.schedule);
+
+
+        bottle1 = (CardView) findViewById(R.id.cardView);
+        bottle2 = (CardView) findViewById(R.id.cardView2);
+        bottle3 = (CardView) findViewById(R.id.cardView4);
+
+        bottle1.setOnClickListener(this);
+        bottle2.setOnClickListener(this);
+        bottle3.setOnClickListener(this);
+
+
+        runOnUiThread(new Runnable() {
+            public void run() {
+                getX=getDefaults(keyx,schedule.this);
+                final TextView mTextView = (TextView) findViewById(R.id.textView2);
+                mTextView.setText(getX);
+
+                getY=getDefaults(keyY,schedule.this);
+                final TextView mTextView1 = (TextView) findViewById(R.id.textView3);
+                mTextView1.setText(getY);
+
+                getZ=getDefaults(keyZ,schedule.this);
+                final TextView mTextView2 = (TextView) findViewById(R.id.textView1);
+                mTextView2.setText(getZ);
+            }
+        });
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(2);
+        menuItem.setChecked(true);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if( item.getItemId() == R.id.ic_home )
+                {
+                    Intent intent1 = new Intent(schedule.this, home.class);
+                    startActivity(intent1);
+                }
+
+                else if( item.getItemId() == R.id.ic_schedule )
+                {
+                    Intent intent1 = new Intent(schedule.this, schedule.class);
+                    startActivity(intent1);
+                }
+
+
+                else if( item.getItemId() == R.id.ic_dispense )
+                {
+                    Intent intent1 = new Intent(schedule.this, DispenseManual.class);
+                    startActivity(intent1);
+
+                }
+
+                else if( item.getItemId() == R.id.ic_history )
+                {
+                    Intent intent1 = new Intent(schedule.this, History.class);
+                    startActivity(intent1);
+                }
+
+                else if( item.getItemId() == R.id.ic_setting )
+                {
+                    Intent intent1 = new Intent(schedule.this, Setting.class);
+                    startActivity(intent1);
+                }
+
+
+                return false;
+            }
+        });
+
+
+
+
+
+
+    }
+
+    public void goalarm(View arg0) {
+
+        Intent intent1 = new Intent(schedule.this, AlarmAdd.class);
+        startActivity(intent1);
+
+    }
+
+
+
+
 
 
     @Override
