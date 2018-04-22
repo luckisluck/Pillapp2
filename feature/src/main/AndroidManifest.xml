@@ -42,7 +42,7 @@
         <activity android:name=".Setting" />
         <activity android:name=".DispenseManual" />
         <activity android:name=".home" />
-        <activity android:name=".test" />
+        <activity android:name=".showalarm" />
         <service android:name=".RingtonePlayingService" />
         <receiver android:name=".AlarmReceiver" android:process=":remote" />
     </application>
