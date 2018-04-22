@@ -402,6 +402,7 @@ public class home extends AppCompatActivity {
 
             } catch (JSONException e) {
                 e.printStackTrace();
+
             }
 
         }

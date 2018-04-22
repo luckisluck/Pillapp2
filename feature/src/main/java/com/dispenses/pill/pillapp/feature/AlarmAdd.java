@@ -57,12 +57,7 @@ import static android.content.Context.ALARM_SERVICE;
 
 public class AlarmAdd extends AppCompatActivity {
 
-    MyDBHandler         dbHandler;
-    SimpleCursorAdapter simpleCursorAdapter;
-    TextView            idView;
-    EditText            etName;
-    EditText            etQuantity;
-    ListView            lvProducts;
+
 
     FloatingActionButton fab1, fab2;
     boolean isFABOpen=false;
@@ -76,18 +71,18 @@ public class AlarmAdd extends AppCompatActivity {
     TextView textAlarmPrompt;
     public static final int DAILY_REMINDER_REQUEST_CODE=100;
     public static final String TAG="NotificationScheduler";
+    MyDBHandler  dbHandler;
+    SimpleCursorAdapter simpleCursorAdapter;
+    ListView lvProducts1;
 
-    TimePickerDialog timePickerDialog;
-    EditText txtTime;
-    private int mYear, mMonth, mDay, mHour, mMinute;
-    int RQS_1 = 1;
-    int cancelAlarm = 0 ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
+        lvProducts1 = (ListView) findViewById(R.id.productList1);
         dbHandler = new MyDBHandler(this, null, null, 1);
         displayProductList();
 
@@ -122,42 +117,6 @@ public class AlarmAdd extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onResume(){
-        super.onResume();
-        setContentView(R.layout.activity_alarm);
-
-        dbHandler = new MyDBHandler(this, null, null, 1);
-        lvProducts = (ListView) findViewById(R.id.hello);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab1 = (FloatingActionButton) findViewById(R.id.fab1);
-        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
-
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isFABOpen){
-                    showFABMenu();
-                }else{
-                    closeFABMenu();
-                }
-            }
-        });
-
-        fab1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                add();
-            }
-        });
-        fab2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                del();
-            }
-        });
-    }
 
     private void showFABMenu(){
         isFABOpen=true;
@@ -182,85 +141,8 @@ public class AlarmAdd extends AppCompatActivity {
         popupTest.show(getSupportFragmentManager(),"example dialog popup");
     }
 
-    public void gettime(View v) {
 
-        // Get Current Time
-        final Calendar c = Calendar.getInstance();
-        mHour = c.get(Calendar.HOUR_OF_DAY);
-        mMinute = c.get(Calendar.MINUTE);
-
-        // Launch Time Picker Dialog
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                new TimePickerDialog.OnTimeSetListener() {
-
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay,
-                                          int minute) {
-
-                        etQuantity.setText(hourOfDay + ":" + minute);
-                        Calendar calNow = Calendar.getInstance();
-                        Calendar calSet = (Calendar) calNow.clone();
-
-                        calSet.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                        calSet.set(Calendar.MINUTE, minute);
-                        calSet.set(Calendar.SECOND, 0);
-                        calSet.set(Calendar.MILLISECOND, 0);
-
-                        if(calSet.compareTo(calNow) <= 0){
-                            //Today Set time passed, count to tomorrow
-                            calSet.add(Calendar.DATE, 1);
-                        }
-                        setAlarm(calSet);
-                    }
-                }, mHour, mMinute, false);
-        timePickerDialog.show();
-
-    }
-
-    public void SaveInt(String key, int value)
-    {
-        SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putInt(key, value);
-        editor.commit();
-    }
-
-
-
-    public void LoadInt( )
-    {
-    SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
-    RQS_1 = sp.getInt("key", 1);
-    }
-
-
-
-    private void setAlarm(Calendar targetCal){
-
-        Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
-        LoadInt();
-        RQS_1 = RQS_1 +1 ;
-        SaveInt("key",RQS_1);
-        intent.putExtra("id", RQS_1);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), pendingIntent);
-
-    }
-
-    public void newProduct(View v) {
-        try {
-            Alarm p = new Alarm(etName.getText().toString(), etQuantity.getText().toString());
-            dbHandler.addAlarm(p);
-            etName.setText("");
-            etQuantity.setText("");
-            displayProductList();
-        } catch (Exception e) {
-
-        }
-    }
-
-    public void lookupProduct(View v) {
+ /*   public void lookupProduct(View v) {
         Alarm p = dbHandler.findProduct(etName.getText().toString());
         if (p == null)
         {
@@ -277,9 +159,9 @@ public class AlarmAdd extends AppCompatActivity {
         } else {
 
         }
-    }
+    }   */
 
-    public void updateProduct(View v) {
+   /* public void updateProduct(View v) {
         try {
             Alarm p = new Alarm(Integer.parseInt(idView.getText().toString()), etName.getText().toString(), etQuantity.getText().toString());
             if (dbHandler.updateProduct(p)) {
@@ -300,7 +182,7 @@ public class AlarmAdd extends AppCompatActivity {
         etName.setText("");
         etQuantity.setText("");
         lvProducts.setAdapter(null);
-    }
+    } */
 
     private void displayProductList() {
         try
@@ -314,7 +196,7 @@ public class AlarmAdd extends AppCompatActivity {
             {
                 return;
             }
-            Toast.makeText(this, "bitch i work", Toast.LENGTH_LONG).show();
+           /* Toast.makeText(this, "bitch i work", Toast.LENGTH_LONG).show(); */
             String[] columns = new String[] {
                     MyDBHandler.COLUMN_ALARMNAME,
                     MyDBHandler.COLUMN_TIME
@@ -324,16 +206,16 @@ public class AlarmAdd extends AppCompatActivity {
                     R.id.pQuantity
             };
             simpleCursorAdapter = new SimpleCursorAdapter(this,
-                    R.layout.alarm_list,
+                    R.layout.alarm_list2,
                     cursor,
                     columns,
                     boundTo,
                     0);
-            lvProducts.setAdapter(simpleCursorAdapter);
+            lvProducts1.setAdapter(simpleCursorAdapter);
         }
         catch (Exception ex)
         {
-            idView.setText("There was an error!");
+            Toast.makeText(this, "There was an error!", Toast.LENGTH_LONG).show();
         }
     }
 
