@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.view.View;
@@ -63,6 +64,13 @@ public class AlarmAdd extends AppCompatActivity {
     EditText            etQuantity;
     ListView            lvProducts;
 
+    FloatingActionButton fab1, fab2;
+    boolean isFABOpen=false;
+
+
+    public static final int CONNECTION_TIMEOUT = 10000;
+    public static final int READ_TIMEOUT = 15000;
+
     TimePicker myTimePicker;
     Button buttonstartSetDialog;
     TextView textAlarmPrompt;
@@ -80,12 +88,98 @@ public class AlarmAdd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
-        etName = (EditText) findViewById(R.id.etName);
-        etQuantity = (EditText) findViewById(R.id.etQuantity);
-        etQuantity.setInputType(InputType.TYPE_NULL);
-        lvProducts = (ListView) findViewById(R.id.productList);
         dbHandler = new MyDBHandler(this, null, null, 1);
         displayProductList();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab1 = (FloatingActionButton) findViewById(R.id.fab1);
+        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isFABOpen){
+                    showFABMenu();
+                }else{
+                    closeFABMenu();
+                }
+            }
+        });
+
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                add();
+            }
+        });
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                del();
+            }
+        });
+
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        setContentView(R.layout.activity_alarm);
+
+        dbHandler = new MyDBHandler(this, null, null, 1);
+        lvProducts = (ListView) findViewById(R.id.hello);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab1 = (FloatingActionButton) findViewById(R.id.fab1);
+        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isFABOpen){
+                    showFABMenu();
+                }else{
+                    closeFABMenu();
+                }
+            }
+        });
+
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                add();
+            }
+        });
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                del();
+            }
+        });
+    }
+
+    private void showFABMenu(){
+        isFABOpen=true;
+        fab1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
+        fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
+
+    }
+
+    private void closeFABMenu(){
+        isFABOpen=false;
+        fab1.animate().translationY(0);
+        fab2.animate().translationY(0);
+    }
+
+    public void add(){
+        addalarm_popup popupTest = new addalarm_popup();
+        popupTest.show(getSupportFragmentManager(),"example dialog popup");
+    }
+
+    public void del(){
+        delalarm_popup popupTest = new delalarm_popup();
+        popupTest.show(getSupportFragmentManager(),"example dialog popup");
     }
 
     public void gettime(View v) {
