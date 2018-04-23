@@ -240,7 +240,43 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
     }
 
     public static String getDefaults(String key, Context context) {
+
+        String Default = "Null";
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getString(key, "Edit Name Inside");
+        switch (key) {
+            case "nameBX":
+                Default = preferences.getString(key, "Box-X");
+                break;
+            case "nameBY":
+                Default = preferences.getString(key, "Box-Y");
+                break;
+            case "nameBZ":
+                Default = preferences.getString(key, "Box-Z");
+                break;
+
+            case "PillStoreX":
+                Default = preferences.getString(key, "No Pill Added to this box");
+                break;
+
+            case "PillStoreY":
+                Default = preferences.getString(key, "No Pill Added to this box");
+                break;
+
+            case "PillStoreZ":
+                Default = preferences.getString(key, "No Pill Added to this box");
+                break;
+
+            case "TempStore":
+                Default = preferences.getString(key, "0");
+                break;
+
+            case "HumidStore":
+                Default = preferences.getString(key, "0");
+                break;
+
+        }
+
+        return Default;
+
     }
 }
