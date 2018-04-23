@@ -60,17 +60,8 @@ public class bottlechoose extends AppCompatActivity {
         setContentView(R.layout.bottlechoose);
         dbHandler = new MyDBHandler(this, null, null, 1);
         lvProducts = (ListView) findViewById(R.id.hello);
+        displayxlist();
 
-        runOnUiThread(new Runnable() {
-            public void run() {
-                displayxlist();
-                simpleCursorAdapter.notifyDataSetChanged();
-                lvProducts.invalidateViews();
-                lvProducts.refreshDrawableState();
-                updateListView();
-
-            }
-        });
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
@@ -124,17 +115,8 @@ public class bottlechoose extends AppCompatActivity {
         fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+        displayxlist();
 
-        runOnUiThread(new Runnable() {
-            public void run() {
-                displayxlist();
-                simpleCursorAdapter.notifyDataSetChanged();
-                lvProducts.invalidateViews();
-                lvProducts.refreshDrawableState();
-                updateListView();
-
-            }
-        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
