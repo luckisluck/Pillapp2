@@ -227,9 +227,25 @@ public class History extends AppCompatActivity {
                         time_Y = jsonArrayY.getJSONObject(i).getString("time_y");
 
                         try {
-                            getY = getDefaults(keyY, History.this);
-                            historyGetSet p = new historyGetSet(getY, pillAmt_Y, time_Y);
-                            dbHandler.Addhistory(p);
+                            Cursor cursor = dbHandler.gethistory();
+                            if (cursor == null || cursor.getCount() == 0)
+                            {
+                                getY = getDefaults(keyY, History.this);
+                                historyGetSet p = new historyGetSet(getY, pillAmt_Y, time_Y);
+                                dbHandler.Addhistory(p);
+                            }
+
+                            else
+                            {
+                                if(count == 0) {
+                                    dbHandler.deleteAllHistory();
+                                    count = 1;
+                                }
+                                getY = getDefaults(keyY, History.this);
+                                historyGetSet p = new historyGetSet(getY, pillAmt_Y, time_Y);
+                                dbHandler.Addhistory(p);
+                            }
+
 
                         } catch (Exception e) {
                             Toast.makeText(History.this, "didnt add to DB Y", Toast.LENGTH_LONG).show();
@@ -249,9 +265,25 @@ public class History extends AppCompatActivity {
                         time_Z = jsonArrayZ.getJSONObject(i).getString("time_z");
 
                         try {
-                            getZ = getDefaults(keyZ, History.this);
-                            historyGetSet p = new historyGetSet(getZ, pillAmt_Z, time_Z);
-                            dbHandler.Addhistory(p);
+                            Cursor cursor = dbHandler.gethistory();
+                            if (cursor == null || cursor.getCount() == 0)
+                            {
+                                getZ = getDefaults(keyZ, History.this);
+                                historyGetSet p = new historyGetSet(getZ, pillAmt_Z, time_Z);
+                                dbHandler.Addhistory(p);
+                            }
+
+                            else
+                            {
+                                if(count == 0) {
+                                    dbHandler.deleteAllHistory();
+                                    count = 1;
+                                }
+                                getZ = getDefaults(keyZ, History.this);
+                                historyGetSet p = new historyGetSet(getZ, pillAmt_Z, time_Z);
+                                dbHandler.Addhistory(p);
+                            }
+
 
                         } catch (Exception e) {
                             Toast.makeText(History.this, "didnt add to DB Y", Toast.LENGTH_LONG).show();
