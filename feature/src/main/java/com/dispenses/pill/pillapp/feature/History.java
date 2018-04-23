@@ -213,43 +213,57 @@ public class History extends AppCompatActivity {
                     }
                 }
 
-                JSONArray jsonArrayY = jsonObject.getJSONArray("pillY");
-                for (int i = 0; i < jsonArrayY.length(); i++) {
-                    pillAmt_Y = jsonArrayY.getJSONObject(i).getString("pillAmt_Y");
-                    time_Y = jsonArrayY.getJSONObject(i).getString("time_y");
-
-                    try {
-                        getY=getDefaults(keyY, History.this);
-                        historyGetSet p = new historyGetSet(getY,pillAmt_Y,time_Y);
-                        dbHandler.Addhistory(p);
-
-                    } catch (Exception e) {
-                        Toast.makeText(History.this, "didnt add to DB Y", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-
-                JSONArray jsonArrayZ = jsonObject.getJSONArray("pillZ");
-                for (int i = 0; i < jsonArrayZ.length(); i++) {
-                    pillAmt_Z = jsonArrayZ.getJSONObject(i).getString("pillAmt_Z");
-                    time_Z = jsonArrayZ.getJSONObject(i).getString("time_z");
-
-                    try {
-                        getZ=getDefaults(keyZ, History.this);
-                        historyGetSet p = new historyGetSet(getZ,pillAmt_Z,time_Z);
-                        dbHandler.Addhistory(p);
-
-                    } catch (Exception e) {
-                        Toast.makeText(History.this, "didnt add to DB Y", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-
-
-
-            } catch (JSONException e) {
+            }
+            catch (JSONException e) {
                 e.printStackTrace();
             }
+
+
+                try {
+                    JSONObject jsonObject = new JSONObject(s);
+                    JSONArray jsonArrayY = jsonObject.getJSONArray("pillY");
+                    for (int i = 0; i < jsonArrayY.length(); i++) {
+                        pillAmt_Y = jsonArrayY.getJSONObject(i).getString("pillAmt_Y");
+                        time_Y = jsonArrayY.getJSONObject(i).getString("time_y");
+
+                        try {
+                            getY = getDefaults(keyY, History.this);
+                            historyGetSet p = new historyGetSet(getY, pillAmt_Y, time_Y);
+                            dbHandler.Addhistory(p);
+
+                        } catch (Exception e) {
+                            Toast.makeText(History.this, "didnt add to DB Y", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    JSONObject jsonObject = new JSONObject(s);
+                    JSONArray jsonArrayZ = jsonObject.getJSONArray("pillZ");
+                    for (int i = 0; i < jsonArrayZ.length(); i++) {
+                        pillAmt_Z = jsonArrayZ.getJSONObject(i).getString("pillAmt_Z");
+                        time_Z = jsonArrayZ.getJSONObject(i).getString("time_z");
+
+                        try {
+                            getZ = getDefaults(keyZ, History.this);
+                            historyGetSet p = new historyGetSet(getZ, pillAmt_Z, time_Z);
+                            dbHandler.Addhistory(p);
+
+                        } catch (Exception e) {
+                            Toast.makeText(History.this, "didnt add to DB Y", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
 
             displayHlist();
         }

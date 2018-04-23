@@ -9,9 +9,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView7"
-        android:layout_marginTop="16dp">
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="115dp">
 
         <TextView
             android:id="@+id/pillAmtH"
@@ -29,10 +29,8 @@
             android:id="@+id/timeH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/pillAmtH"
-            android:layout_alignBottom="@+id/pillAmtH"
-            android:layout_marginStart="54dp"
-            android:layout_toEndOf="@+id/pillAmtH"
+            android:layout_alignTop="@+id/pillAmtH"
+            android:layout_centerHorizontal="true"
             android:fontFamily="@font/moon"
             android:text="TextView"
             android:textSize="13dp" />
