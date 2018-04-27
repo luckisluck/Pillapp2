@@ -102,7 +102,6 @@ public class bottlechoose3 extends AppCompatActivity {
     public void editz(){
         EditPillZ popupTest = new EditPillZ();
         popupTest.show(getSupportFragmentManager(),"example dialog popup");
-        displayZlist();
     }
 
     private void displayZlist() {
