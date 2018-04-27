@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     String remember="pass";
     private EditText etEmail;
     int box = 0;
+    int go =0;
     private EditText etPassword;
     public static final int CONNECTION_TIMEOUT=10000;
     public static final int READ_TIMEOUT=15000;
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
             else
             {
-                box = 3;
+                go = 3;
             }
 
         }
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         final String email = etEmail.getText().toString();
         final String password = etPassword.getText().toString();
 
-        if(box == 3)
+        if(go == 3)
         {
             new AsyncLogin().execute(email, password);
         }
