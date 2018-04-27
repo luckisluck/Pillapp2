@@ -93,12 +93,14 @@ public class DispenseManual extends AppCompatActivity {
                 {
                     Intent intent1 = new Intent(DispenseManual.this, home.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 else if( item.getItemId() == R.id.ic_schedule )
                 {
                     Intent intent1 = new Intent(DispenseManual.this, schedule.class);
                     startActivity(intent1);
+                    finish();
                 }
 
 
@@ -106,18 +108,21 @@ public class DispenseManual extends AppCompatActivity {
                 {
                     Intent intent1 = new Intent(DispenseManual.this, DispenseManual.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 else if( item.getItemId() == R.id.ic_history )
                 {
                     Intent intent1 = new Intent(DispenseManual.this, History.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 else if( item.getItemId() == R.id.ic_setting )
                 {
                     Intent intent1 = new Intent(DispenseManual.this, Setting.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 return false;

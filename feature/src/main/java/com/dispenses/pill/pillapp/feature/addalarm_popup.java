@@ -103,6 +103,9 @@ public class addalarm_popup extends AppCompatDialogFragment {
                         {
                             Toast.makeText(getActivity(), "didnt add to DB", Toast.LENGTH_LONG).show();
                         }
+
+                        Intent intent1 = new Intent(context, AlarmAdd.class);
+                        startActivity(intent1);
                     }
 
                 });

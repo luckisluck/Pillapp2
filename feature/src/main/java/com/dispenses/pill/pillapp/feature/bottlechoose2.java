@@ -99,6 +99,7 @@ public class bottlechoose2 extends AppCompatActivity {
         fab1.animate().translationY(0);
         fab2.animate().translationY(0);
         fab3.animate().translationY(0);
+
     }
 
     public void openDialog(){

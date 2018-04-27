@@ -140,12 +140,14 @@ public class home extends AppCompatActivity {
                 {
                     Intent intent1 = new Intent(home.this, home.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 else if( item.getItemId() == R.id.ic_schedule )
                 {
                     Intent intent1 = new Intent(home.this, schedule.class);
                     startActivity(intent1);
+                    finish();
                 }
 
 
@@ -153,18 +155,21 @@ public class home extends AppCompatActivity {
                 {
                     Intent intent1 = new Intent(home.this, DispenseManual.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 else if( item.getItemId() == R.id.ic_history )
                 {
                     Intent intent1 = new Intent(home.this, History.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 else if( item.getItemId() == R.id.ic_setting )
                 {
                     Intent intent1 = new Intent(home.this, Setting.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 return false;
@@ -522,4 +527,6 @@ public class home extends AppCompatActivity {
         }
         return answer.toString();
     }
+
+
 }

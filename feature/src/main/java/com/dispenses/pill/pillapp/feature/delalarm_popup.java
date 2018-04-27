@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
@@ -44,7 +45,8 @@ public class delalarm_popup extends AppCompatDialogFragment  {
                         } else {
                             Toast.makeText(getActivity(), "didnt del from DB", Toast.LENGTH_LONG).show();
                         }
-
+                        Intent intent1 = new Intent(context, AlarmAdd.class);
+                        startActivity(intent1);
 
                     }
 

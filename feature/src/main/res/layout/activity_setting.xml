@@ -61,6 +61,7 @@
                 android:background="@drawable/rounde_butt"
                 android:fontFamily="@font/moon"
                 android:text="Logout"
+                android:onClick="clear"
                 android:textColor="@color/white" />
         </RelativeLayout>
     </FrameLayout>

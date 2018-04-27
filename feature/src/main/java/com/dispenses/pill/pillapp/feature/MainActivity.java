@@ -1,6 +1,8 @@
 package com.dispenses.pill.pillapp.feature;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -35,10 +38,13 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout l1,l2;
     Button btn1,btn2;
     Animation uptodown,downtoup;
+    String remember="pass";
     private EditText etEmail;
+    int box = 0;
     private EditText etPassword;
     public static final int CONNECTION_TIMEOUT=10000;
     public static final int READ_TIMEOUT=15000;
+    CheckBox fee_checkbox1;
     ProgressDialog progressDialog;
 
 
@@ -50,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             // Get Reference to variables
             etEmail = (EditText) findViewById(R.id.editText25);
             etPassword = (EditText) findViewById(R.id.editText26);
+            fee_checkbox1 = (CheckBox)findViewById(R.id.checkBox4);
 
 
             btn1 = (Button)findViewById(R.id.button4);
@@ -62,6 +69,18 @@ public class MainActivity extends AppCompatActivity {
             l2.setAnimation(downtoup);
 
 
+            String checkCond = getDefaults(remember,MainActivity.this);
+            if(checkCond.equals("ok")) {
+                Intent intent = new Intent(MainActivity.this,home.class);
+                startActivity(intent);
+                MainActivity.this.finish();
+            }
+
+            else
+            {
+                box = 3;
+            }
+
         }
 
 
@@ -73,9 +92,10 @@ public class MainActivity extends AppCompatActivity {
         final String email = etEmail.getText().toString();
         final String password = etPassword.getText().toString();
 
-        // Initialize  AsyncLogin() class with email and password
-        new AsyncLogin().execute(email,password);
-
+        if(box == 3)
+        {
+            new AsyncLogin().execute(email, password);
+        }
     }
 
 
@@ -193,6 +213,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 MainActivity.this.finish();
 
+                if(box == 1) { savelogin(remember, "ok", MainActivity.this);
+                }
+
             }else if (result.equalsIgnoreCase("false")){
 
                 // If username and password does not match display a error message
@@ -206,6 +229,45 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
+    public static void savelogin(String key, String value, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+
+    public void Save(View v)
+    {
+
+        if(fee_checkbox1.isChecked())
+        {
+            box=1;
+        }
+
+        else
+        {
+            box=0;
+        }
+
+    }
+
+    public static String getDefaults(String key, Context context) {
+
+        String Default = "Null";
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        switch (key) {
+            case "pass":
+                Default = preferences.getString(key, "0");
+                break;
+
+        }
+
+        return Default;
+
+    }
+
 
 
 

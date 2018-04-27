@@ -161,12 +161,14 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
                 {
                     Intent intent1 = new Intent(schedule.this, home.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 else if( item.getItemId() == R.id.ic_schedule )
                 {
                     Intent intent1 = new Intent(schedule.this, schedule.class);
                     startActivity(intent1);
+                    finish();
                 }
 
 
@@ -174,6 +176,7 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
                 {
                     Intent intent1 = new Intent(schedule.this, DispenseManual.class);
                     startActivity(intent1);
+                    finish();
 
                 }
 
@@ -181,12 +184,14 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
                 {
                     Intent intent1 = new Intent(schedule.this, History.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 else if( item.getItemId() == R.id.ic_setting )
                 {
                     Intent intent1 = new Intent(schedule.this, Setting.class);
                     startActivity(intent1);
+                    finish();
                 }
 
 

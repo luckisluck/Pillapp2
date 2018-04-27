@@ -75,12 +75,14 @@ public class History extends AppCompatActivity {
                 {
                     Intent intent1 = new Intent(History.this, home.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 else if( item.getItemId() == R.id.ic_schedule )
                 {
                     Intent intent1 = new Intent(History.this, schedule.class);
                     startActivity(intent1);
+                    finish();
                 }
 
 
@@ -88,18 +90,21 @@ public class History extends AppCompatActivity {
                 {
                     Intent intent1 = new Intent(History.this, DispenseManual.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 else if( item.getItemId() == R.id.ic_history )
                 {
                     Intent intent1 = new Intent(History.this, History.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 else if( item.getItemId() == R.id.ic_setting )
                 {
                     Intent intent1 = new Intent(History.this, Setting.class);
                     startActivity(intent1);
+                    finish();
                 }
 
                 return false;
