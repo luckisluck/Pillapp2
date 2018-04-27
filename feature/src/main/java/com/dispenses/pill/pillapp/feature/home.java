@@ -1,11 +1,17 @@
 package com.dispenses.pill.pillapp.feature;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -188,6 +194,44 @@ public class home extends AppCompatActivity {
 
     }
 
+    public void notitemphumid(String messageTitle,String message) {
+
+        int NOTIFICATION_ID = 234;
+        String CHANNEL_ID = "my_channel_01";
+
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            CharSequence name = "my_channel";
+            String Description = "This is my channel";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+            mChannel.setDescription(Description);
+            mChannel.enableLights(true);
+            mChannel.setLightColor(Color.RED);
+            mChannel.enableVibration(true);
+            mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+            mChannel.setShowBadge(false);
+            notificationManager.createNotificationChannel(mChannel);
+        }
+
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(messageTitle)
+                .setContentText(message);
+
+        Intent resultIntent = new Intent(this, home.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(home.class);
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        builder.setContentIntent(resultPendingIntent);
+
+        notificationManager.notify(NOTIFICATION_ID, builder.build());
+
+    }
+
     private class AsyncAutoDispense extends AsyncTask<String, String, String> {
         ProgressDialog pdLoading = new ProgressDialog(home.this);
         HttpURLConnection conn;
@@ -344,6 +388,22 @@ public class home extends AppCompatActivity {
 
                 setDefaultstemphumid(TempStore,Temperature,home.this);
                 setDefaultstemphumid(HumidStore,Humidity,home.this);
+                int tempcheck = Integer.parseInt(Temperature);
+                int humidcheck = Integer.parseInt(Humidity);
+
+                if( tempcheck > 100  )
+                {
+                    String title = "Dispenser is too hot !!!";
+                    String message = "Dispenser is getting overheated please place it somewhere colder";
+                    notitemphumid(title,message);
+                }
+
+                if(humidcheck > 100)
+                {
+                    String title = "Dispenser is too humid !!!";
+                    String message = "Dispenser is getting too humid please place it somewhere less humid";
+                    notitemphumid(title,message);
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -402,6 +462,31 @@ public class home extends AppCompatActivity {
                 setDefaultstemphumid(PillStoreX,pillAmtX,home.this);
                 setDefaultstemphumid(PillStoreY,pillAmtY,home.this);
                 setDefaultstemphumid(PillStoreZ,pillAmtZ,home.this);
+
+                int pillAmtx = Integer.parseInt(pillAmtX);
+                int pillAmty = Integer.parseInt(pillAmtY);
+                int pillAmtz = Integer.parseInt(pillAmtZ);
+
+                if( pillAmtx < 5  )
+                {
+                    String title = "Only "+pillAmtX+" pill left";
+                    String message ="Only "+pillAmtX+" left in pill bottle "+getX+" .Consider refilling it soon!!" ;
+                    notitemphumid(title,message);
+                }
+
+                if(pillAmty < 5)
+                {
+                    String title = "Only "+pillAmtY+" pill left";
+                    String message ="Only "+pillAmtY+" left in pill bottle "+getY+" .Consider refilling it soon!!" ;
+                    notitemphumid(title,message);
+                }
+
+                if(pillAmtz < 5)
+                {
+                    String title = "Only "+pillAmtZ+" pill left";
+                    String message ="Only "+pillAmtZ+" left in pill bottle "+getZ+" .Consider refilling it soon!!" ;
+                    notitemphumid(title,message);
+                }
 
                 updatetextview();
 
