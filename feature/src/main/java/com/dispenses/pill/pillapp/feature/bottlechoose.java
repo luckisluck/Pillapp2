@@ -205,7 +205,6 @@ public class bottlechoose extends AppCompatActivity {
             {
                 return;
             }
-            Toast.makeText(this, "bitch i work", Toast.LENGTH_LONG).show();
             String[] columns = new String[] {
                     MyDBHandler.COLUMN_NAME,
                     MyDBHandler.COLUMN_STARTTIME,

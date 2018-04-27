@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="142dp"
+    android:layout_height="100dp"
     android:orientation="vertical"
     android:padding="6dp">
 
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="Name: "
+        android:text="@string/name"
         android:fontFamily="@font/moon"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -24,7 +24,7 @@
         android:layout_below="@+id/textViewx"
         android:layout_marginTop="7dp"
         android:fontFamily="@font/moon"
-        android:text="Start Time: "
+        android:text="@string/time_range"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -32,10 +32,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/starttimex"
-        android:layout_marginTop="7dp"
-        android:text="End Time: "
+        android:layout_centerVertical="true"
+        android:layout_marginStart="180dp"
         android:fontFamily="@font/moon"
+        android:text="@string/se"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -46,7 +46,7 @@
         android:layout_below="@+id/endttime"
         android:layout_marginTop="7dp"
         android:fontFamily="@font/moon"
-        android:text="Pill Amount: "
+        android:text="@string/pill_amount"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
@@ -58,7 +58,7 @@
         android:layout_marginStart="15dp"
         android:layout_toEndOf="@+id/PillAmt"
         android:fontFamily="@font/moon"
-        android:text="TextView" />
+        android:text="@string/textview" />
 
     <TextView
         android:id="@+id/startx"
@@ -68,24 +68,25 @@
         android:layout_alignBottom="@+id/starttimex"
         android:layout_alignStart="@+id/Namex"
         android:fontFamily="@font/moon"
-        android:text="TextView" />
+        android:text="@string/textview" />
+
     <TextView
         android:id="@+id/endx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/PillAmt"
-        android:layout_alignStart="@+id/startx"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="153dp"
         android:fontFamily="@font/moon"
-        android:text="TextView" />
+        android:text="@string/textview" />
 
 
     <TextView
         android:id="@+id/pillamtx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/PillAmt"
-        android:layout_alignBottom="@+id/PillAmt"
-        android:layout_alignStart="@+id/endx"
+        android:layout_alignStart="@+id/Namex"
+        android:layout_alignTop="@+id/PillAmt"
         android:fontFamily="@font/moon"
-        android:text="TextView" />
+        android:text="@string/textview" />
 </RelativeLayout>

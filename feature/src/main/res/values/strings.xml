@@ -23,5 +23,10 @@
     <string name="delete">DELETE</string>
     <string name="delete_all">DELETE ALL</string>
     <string name="update">UPDATE</string>
+    <string name="textview">TextView</string>
+    <string name="pill_amount">Pill Amount:</string>
+    <string name="se">-</string>
+    <string name="time_range">Time Range:</string>
+    <string name="name">Name:</string>
 
 </resources>

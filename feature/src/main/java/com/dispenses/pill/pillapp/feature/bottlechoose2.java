@@ -130,7 +130,6 @@ public class bottlechoose2 extends AppCompatActivity {
             {
                 return;
             }
-            Toast.makeText(this, "bitch i work", Toast.LENGTH_LONG).show();
             String[] columns = new String[] {
                     MyDBHandler.COLUMN_NAMEY,
                     MyDBHandler.COLUMN_STARTTIMEY,
