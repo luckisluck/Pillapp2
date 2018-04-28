@@ -194,9 +194,8 @@ public class home extends AppCompatActivity {
 
     }
 
-    public void notitemphumid(String messageTitle,String message) {
+    public void notitemphumid(String messageTitle,String message,int NOTIFICATION_ID) {
 
-        int NOTIFICATION_ID = 234;
         String CHANNEL_ID = "my_channel_01";
 
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -391,18 +390,20 @@ public class home extends AppCompatActivity {
                 int tempcheck = Integer.parseInt(Temperature);
                 int humidcheck = Integer.parseInt(Humidity);
 
-                if( tempcheck > 100  )
+                if( tempcheck > 45  )
                 {
                     String title = "Dispenser is too hot !!!";
                     String message = "Dispenser is getting overheated please place it somewhere colder";
-                    notitemphumid(title,message);
+                    int NOTIFICATION_ID = 234;
+                    notitemphumid(title,message,NOTIFICATION_ID);
                 }
 
-                if(humidcheck > 100)
+                if(humidcheck > 50)
                 {
                     String title = "Dispenser is too humid !!!";
                     String message = "Dispenser is getting too humid please place it somewhere less humid";
-                    notitemphumid(title,message);
+                    int NOTIFICATION_ID = 235;
+                    notitemphumid(title,message,NOTIFICATION_ID);
                 }
 
             } catch (JSONException e) {
@@ -471,21 +472,24 @@ public class home extends AppCompatActivity {
                 {
                     String title = "Only "+pillAmtX+" pill left";
                     String message ="Only "+pillAmtX+" left in pill bottle "+getX+" .Consider refilling it soon!!" ;
-                    notitemphumid(title,message);
+                    int NOTIFICATION_ID = 237;
+                    notitemphumid(title,message,NOTIFICATION_ID);
                 }
 
                 if(pillAmty < 5)
                 {
                     String title = "Only "+pillAmtY+" pill left";
                     String message ="Only "+pillAmtY+" left in pill bottle "+getY+" .Consider refilling it soon!!" ;
-                    notitemphumid(title,message);
+                    int NOTIFICATION_ID = 238;
+                    notitemphumid(title,message,NOTIFICATION_ID);
                 }
 
                 if(pillAmtz < 5)
                 {
                     String title = "Only "+pillAmtZ+" pill left";
                     String message ="Only "+pillAmtZ+" left in pill bottle "+getZ+" .Consider refilling it soon!!" ;
-                    notitemphumid(title,message);
+                    int NOTIFICATION_ID = 239;
+                    notitemphumid(title,message,NOTIFICATION_ID);
                 }
 
                 updatetextview();
