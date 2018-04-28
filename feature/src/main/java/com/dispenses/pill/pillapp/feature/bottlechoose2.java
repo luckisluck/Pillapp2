@@ -230,6 +230,7 @@ public class bottlechoose2 extends AppCompatActivity {
 
 
             } catch (JSONException e) {
+                Toast.makeText(bottlechoose2.this, "No configuration found", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
 

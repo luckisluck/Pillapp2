@@ -246,6 +246,7 @@ public class bottlechoose extends AppCompatActivity {
 
 
             } catch (JSONException e) {
+                Toast.makeText(bottlechoose.this, "No configuration found", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
 
