@@ -19,6 +19,12 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -78,56 +84,10 @@ public class bottlechoose extends AppCompatActivity {
             }
         });
 
-        fab1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialog();
-            }
-        });
-
-        fab2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                delx();
-            }
-        });
-
-        fab3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editx();
-            }
-        });
-
-
-
-    }
-
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        setContentView(R.layout.bottlechoose);
-
-        dbHandler = new MyDBHandler(this, null, null, 1);
-        lvProducts = (ListView) findViewById(R.id.hello);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab1 = (FloatingActionButton) findViewById(R.id.fab1);
-        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
-        fab3 = (FloatingActionButton) findViewById(R.id.fab3);
-        displayxlist();
-
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isFABOpen){
-                    showFABMenu();
-                }else{
-                    closeFABMenu();
-                }
-            }
-        });
+        Cursor cursor = dbHandler.getallbottlex();
+        if (cursor == null || cursor.getCount() == 0) {
+            new AsyncGetConfig().execute();
+        }
 
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,9 +113,6 @@ public class bottlechoose extends AppCompatActivity {
 
 
     }
-
-
-
 
         private void showFABMenu(){
         isFABOpen=true;
@@ -232,6 +189,87 @@ public class bottlechoose extends AppCompatActivity {
         }
     }
 
+
+    private class AsyncGetConfig extends AsyncTask<Void, Void, String> {
+        ProgressDialog pdLoading = new ProgressDialog(bottlechoose.this);
+        HttpURLConnection conn;
+        URL url = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //this method will be running on UI thread
+            pdLoading.setMessage("\tDownloading your configuration...");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            String result = null;
+            try {
+                URL url = new URL("http://weighty-beach-183107.appspot.com/getallconfig.php");
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                result = inputStreamToString(in);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            pdLoading.dismiss();
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                JSONArray jsonArray = jsonObject.getJSONArray("pillX");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        String timeName = jsonArray.getJSONObject(i).getString("timeName");
+                        String startTime = jsonArray.getJSONObject(i).getString("startTime");
+                        String endTime = jsonArray.getJSONObject(i).getString("endTime");
+                        String pillAmt = jsonArray.getJSONObject(i).getString("pillAmt");
+                        int k = Integer.parseInt(pillAmt);
+                        try {
+                            bottlexGetSet p = new bottlexGetSet(timeName, startTime, endTime, k);
+                            dbHandler.bottlexAdd(p);
+
+                        } catch (Exception e) {
+                            Toast.makeText(bottlechoose.this, "didnt add to DB", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            displayxlist();
+        }
+    }
+
+    private String inputStreamToString(InputStream is) {
+        String rLine = "";
+        StringBuilder answer = new StringBuilder();
+
+        InputStreamReader isr = new InputStreamReader(is);
+
+        BufferedReader rd = new BufferedReader(isr);
+
+        try {
+            while ((rLine = rd.readLine()) != null) {
+                answer.append(rLine);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return answer.toString();
+    }
 
 
 
