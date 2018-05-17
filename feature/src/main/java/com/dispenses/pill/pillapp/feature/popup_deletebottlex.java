@@ -50,7 +50,7 @@ public class popup_deletebottlex extends AppCompatDialogFragment {
 
 
         globalContext = this.getActivity();
-        builder.setView(view).setTitle("Delete Alarm").setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+        builder.setView(view).setTitle("Delete Schedule").setNegativeButton("cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 

@@ -40,7 +40,7 @@ public class delalarm_popup extends AppCompatDialogFragment  {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                         final String name = delname.getText().toString();
-                        if (dbHandler.deleteScheduley(name)) {
+                        if (dbHandler.deleteProduct(name)) {
                             Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(getActivity(), "didnt del from DB", Toast.LENGTH_LONG).show();

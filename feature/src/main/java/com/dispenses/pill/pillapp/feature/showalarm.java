@@ -42,7 +42,6 @@ public class showalarm extends AppCompatActivity {
     public void stooooop(View arg0) {
         Intent i = new Intent(this, RingtonePlayingService.class);
         stopService(i);
-        Toast.makeText(this, "didnt add to DB", Toast.LENGTH_LONG).show();
         this.finish();
     }
 

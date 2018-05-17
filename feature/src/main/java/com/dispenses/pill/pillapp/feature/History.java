@@ -214,7 +214,7 @@ public class History extends AppCompatActivity {
                         }
 
                     } catch (Exception e) {
-                        Toast.makeText(History.this, "didnt add to DB", Toast.LENGTH_LONG).show();
+                        Toast.makeText(History.this, "DB Error", Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -253,7 +253,7 @@ public class History extends AppCompatActivity {
 
 
                         } catch (Exception e) {
-                            Toast.makeText(History.this, "didnt add to DB Y", Toast.LENGTH_LONG).show();
+                            Toast.makeText(History.this, "DB Error", Toast.LENGTH_LONG).show();
                         }
                     }
 
@@ -291,7 +291,7 @@ public class History extends AppCompatActivity {
 
 
                         } catch (Exception e) {
-                            Toast.makeText(History.this, "didnt add to DB Y", Toast.LENGTH_LONG).show();
+                            Toast.makeText(History.this, "DB Error", Toast.LENGTH_LONG).show();
                         }
                     }
 
