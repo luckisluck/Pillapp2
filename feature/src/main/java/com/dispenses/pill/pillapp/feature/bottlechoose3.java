@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -32,7 +33,7 @@ public class bottlechoose3 extends AppCompatActivity {
     FloatingActionButton fab1, fab2,fab3;
     boolean isFABOpen = false;
 
-
+    private TextView add1,del1,edit1;
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
     SimpleCursorAdapter simpleCursorAdapter;
@@ -50,7 +51,9 @@ public class bottlechoose3 extends AppCompatActivity {
         fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fab3 = (FloatingActionButton) findViewById(R.id.fab3);
-
+        add1 = (TextView) findViewById(R.id.add1);
+        del1 = (TextView) findViewById(R.id.del1);
+        edit1 = (TextView) findViewById(R.id.edit1);
 
         Cursor cursor = dbHandler.getallbottlez();
         if (cursor == null || cursor.getCount() == 0) {
@@ -100,6 +103,19 @@ public class bottlechoose3 extends AppCompatActivity {
         fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
         fab3.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
 
+        add1 = (TextView) findViewById(R.id.add1);
+        del1 = (TextView) findViewById(R.id.del1);
+        edit1 = (TextView) findViewById(R.id.edit1);
+        add1.setVisibility(View.VISIBLE);
+        edit1.setVisibility(View.VISIBLE);
+        del1.setVisibility(View.VISIBLE);
+        add1.animate().translationY(-getResources().getDimension(R.dimen.standard_65));
+        add1.animate().translationX(-getResources().getDimension(R.dimen.standard_65));
+        del1.animate().translationY(-getResources().getDimension(R.dimen.standard_110));
+        del1.animate().translationX(-getResources().getDimension(R.dimen.standard_65));
+        edit1.animate().translationY(-getResources().getDimension(R.dimen.standard_160));
+        edit1.animate().translationX(-getResources().getDimension(R.dimen.standard_65));
+
     }
 
     private void closeFABMenu() {
@@ -107,6 +123,20 @@ public class bottlechoose3 extends AppCompatActivity {
         fab1.animate().translationY(0);
         fab2.animate().translationY(0);
         fab3.animate().translationY(0);
+
+        add1 = (TextView) findViewById(R.id.add1);
+        del1 = (TextView) findViewById(R.id.del1);
+        edit1 = (TextView) findViewById(R.id.edit1);
+
+        add1.animate().translationX(0);
+        add1.animate().translationY(0);
+        del1.animate().translationX(0);
+        del1.animate().translationY(0);
+        edit1.animate().translationX(0);
+        edit1.animate().translationY(0);
+        add1.setVisibility(View.INVISIBLE);
+        edit1.setVisibility(View.INVISIBLE);
+        del1.setVisibility(View.INVISIBLE);
     }
 
     public void openDialog(){

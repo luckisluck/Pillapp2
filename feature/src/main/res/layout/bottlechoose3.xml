@@ -50,6 +50,44 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/add1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/standard_21"
+        android:text="Add Schedule"
+        android:fontFamily="@font/moon"
+        android:textColor="#FF4081"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/del1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/standard_21"
+        android:text="Delete Schedule"
+        android:fontFamily="@font/moon"
+        android:textColor="#FF4081"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/edit1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/standard_21"
+        android:text="Edit Name/Pill Amount"
+        android:fontFamily="@font/moon"
+        android:textColor="#FF4081"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab3"

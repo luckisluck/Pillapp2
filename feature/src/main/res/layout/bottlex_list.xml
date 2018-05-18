@@ -31,9 +31,9 @@
         android:id="@+id/endttime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="180dp"
+        android:layout_alignBaseline="@+id/starttimex"
+        android:layout_alignBottom="@+id/starttimex"
+        android:layout_centerHorizontal="true"
         android:fontFamily="@font/moon"
         android:text="@string/se"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -74,9 +74,10 @@
         android:id="@+id/endx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="153dp"
+        android:layout_alignBaseline="@+id/startx"
+        android:layout_alignBottom="@+id/startx"
+        android:layout_marginStart="26dp"
+        android:layout_toEndOf="@+id/endttime"
         android:fontFamily="@font/moon"
         android:text="@string/textview" />
 

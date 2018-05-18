@@ -8,6 +8,9 @@
     <dimen name="standard_55">55dp</dimen>
     <dimen name="standard_105">105dp</dimen>
     <dimen name="standard_155">155dp</dimen>
+    <dimen name="standard_65">65dp</dimen>
+    <dimen name="standard_110">113dp</dimen>
+    <dimen name="standard_160">160dp</dimen>
 
 
 </resources>

@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 public class schedule extends AppCompatActivity implements View.OnClickListener {
 
-    private CardView bottle1,bottle2,bottle3;
+    private CardView bottle1,bottle2,bottle3,boo;
     String keyx="nameBX";
     String keyY="nameBY";
     String keyZ="nameBZ";
@@ -40,10 +40,12 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
         bottle1 = (CardView) findViewById(R.id.cardView);
         bottle2 = (CardView) findViewById(R.id.cardView2);
         bottle3 = (CardView) findViewById(R.id.cardView4);
+        boo = (CardView) findViewById(R.id.cardView6);
 
         bottle1.setOnClickListener(this);
         bottle2.setOnClickListener(this);
         bottle3.setOnClickListener(this);
+        boo.setOnClickListener(this);
 
         runOnUiThread(new Runnable() {
             public void run() {
@@ -58,6 +60,10 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
                 getZ=getDefaults(keyZ,schedule.this);
                 final TextView mTextView2 = (TextView) findViewById(R.id.textView1);
                 mTextView2.setText(getZ);
+
+
+
+
             }
         });
 
@@ -126,10 +132,13 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
         bottle1 = (CardView) findViewById(R.id.cardView);
         bottle2 = (CardView) findViewById(R.id.cardView2);
         bottle3 = (CardView) findViewById(R.id.cardView4);
+        boo = (CardView) findViewById(R.id.cardView6);
+
 
         bottle1.setOnClickListener(this);
         bottle2.setOnClickListener(this);
         bottle3.setOnClickListener(this);
+        boo.setOnClickListener(this);
 
 
         runOnUiThread(new Runnable() {
@@ -206,15 +215,6 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-    public void goalarm(View arg0) {
-
-        Intent intent1 = new Intent(schedule.this, AlarmAdd.class);
-        startActivity(intent1);
-
-    }
-
-
-
 
 
 
@@ -240,6 +240,13 @@ public class schedule extends AppCompatActivity implements View.OnClickListener 
                 Intent intent1 = new Intent(schedule.this, bottlechoose3.class);
                 startActivity(intent1);
                 }
+
+        else if (view.getId() == R.id.cardView6)
+
+        {
+            Intent intent1 = new Intent(schedule.this, AlarmAdd.class);
+            startActivity(intent1);
+        }
 
 
     }
