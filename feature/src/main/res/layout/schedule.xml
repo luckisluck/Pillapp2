@@ -247,6 +247,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cardView6"
+                android:layout_gravity="bottom"
                 android:layout_marginTop="14dp"
                 android:background="@drawable/gradle"
                 app:layout_constraintBottom_toBottomOf="parent"
